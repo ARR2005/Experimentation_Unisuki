@@ -1,24 +1,27 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
+import { StyleSheet, Text, View } from 'react-native'
+import React from 'react'
+import { Stack } from 'expo-router'
+import { FadeIn } from 'react-native-reanimated'
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
+import { StatusBar } from 'expo-status-bar'
 
-import { useColorScheme } from '@/hooks/use-color-scheme';
-
-export const unstable_settings = {
-  anchor: '(tabs)',
-};
-
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
-
+const _layout = () => {
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
-  );
+    <SafeAreaProvider>
+      <SafeAreaView style={{ flex: 1 }} edges={['top', 'left', 'right']}>
+        <StatusBar />
+        <Stack screenOptions={{ 
+          headerShown: false,
+          animation: "fade", 
+        }}>
+      <Stack.Screen name="index" options={{ presentation: 'card' }} />
+      <Stack.Screen name="login" options={{ presentation: 'card' }} />
+    </Stack>
+      </SafeAreaView>
+    </SafeAreaProvider>
+  )
 }
+
+export default _layout
+
+const styles = StyleSheet.create({})

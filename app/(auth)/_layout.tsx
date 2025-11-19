@@ -2,13 +2,16 @@ import { Stack } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
 import React from 'react'
 
-const _layout = () => {
+const authlayout = () => {
   return (
     <>
         <StatusBar style='auto' />
-        <Stack screenOptions={{ headerShown: false }}/>
+        <Stack>
+            <Stack.Screen name="login" options={{ headerShown: false }}/>
+            <Stack.Screen name="signup"/>
+        </Stack>
     </>
   )
 }
 
-export default _layout
+export default authlayout

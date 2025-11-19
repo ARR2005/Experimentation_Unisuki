@@ -1,4 +1,3 @@
-import { SocialConnections } from '@/components/social-connections';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -9,11 +8,10 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Separator } from '@/components/ui/separator';
 import { Text } from '@/components/ui/text';
+import { Link } from 'expo-router';
 import * as React from 'react';
 import { Pressable, type TextInput, View } from 'react-native';
-import { Link } from 'expo-router';
 
 export function SignInForm() {
   const passwordInputRef = React.useRef<TextInput>(null);
@@ -27,12 +25,12 @@ export function SignInForm() {
   }
 
   return (
-    <View className="gap-6">
+    <View className='absolute top-0 w-full'>
       <Card className="border-border/0 sm:border-border shadow-none sm:shadow-sm sm:shadow-black/5">
         <CardHeader>
           <CardTitle className="text-center text-xl sm:text-left">Sign in to your app</CardTitle>
           <CardDescription className="text-center sm:text-left">
-            Welcome back! Please sign in to continue
+            Welcome Please sign in to continue
           </CardDescription>
         </CardHeader>
         <CardContent className="gap-6">
@@ -41,7 +39,7 @@ export function SignInForm() {
               <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
-                placeholder="m@example.com"
+                placeholder="gmail@example.com"
                 keyboardType="email-address"
                 autoComplete="email"
                 autoCapitalize="none"
@@ -72,7 +70,7 @@ export function SignInForm() {
               />
             </View>
             <Button className="w-full" onPress={onSubmit}>
-              <Text>Continue</Text>
+              <Link href='/(dashboard)/home' className='text-white'>Continue</Link>
             </Button>
           </View>
           <Text className="text-center text-sm">
@@ -81,8 +79,8 @@ export function SignInForm() {
               onPress={() => {
                 // TODO: Navigate to sign up screen
               }}>
-              <Link href='/(auth)/signup' className="text-sm underline underline-offset-4">Sign up</Link>
             </Pressable>
+            <Link href="/(auth)/signup" className='text-sm underline underline-offset-4'>Sign up</Link>
           </Text>
         </CardContent>
       </Card>

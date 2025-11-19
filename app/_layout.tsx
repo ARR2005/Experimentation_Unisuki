@@ -6,21 +6,22 @@ import { StatusBar } from 'expo-status-bar';
 
 import "../global.css";
 
-const _layout = () => {
+const mainlayout = () => {
   return (
     <>
       <StatusBar style = 'auto' />
       <Stack screenOptions={{
         headerShown: false
       }}>
-        <Stack.Screen name="(auth)"/>
         <Stack.Screen name="index" />
+        <Stack.Screen name="(auth)"/>
+        <Stack.Screen name="(dashboard)"/>
       </Stack>
       <PortalHost />
     </>
   );
 };
 
-export default _layout
+export default mainlayout;
 
 const style = StyleSheet.create({})

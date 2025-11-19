@@ -71,6 +71,7 @@ export function SignUpForm() {
                 // TODO: Navigate to sign in screen
               }}>
               <Link href="/(auth)/login" className='text-sm underline underline-offset-4'>Sign in</Link>
+              <Link href="/(auth)/textCapture" className='text-sm underline underline-offset-4'>take picture</Link>
             </Pressable>
           </Text>
           <View className="flex-row items-center">

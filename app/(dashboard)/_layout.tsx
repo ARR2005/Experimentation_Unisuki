@@ -1,10 +1,11 @@
 import { Ionicons } from '@expo/vector-icons';
-import { Tabs } from 'expo-router';
+import { Tabs, useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import { Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 function CustomTabBar({ state, descriptors, navigation }: any) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const router = useRouter();
 
   return (
     <View style={styles.tabBarContainer} pointerEvents="box-none">
@@ -60,7 +61,7 @@ function CustomTabBar({ state, descriptors, navigation }: any) {
             style={styles.pill}
             onPress={() => {
               setMenuOpen(false);
-              navigation.navigate('check');
+              router.push('/(pill)/check');
             }}
           >
             <Ionicons name="checkmark" size={18} color="#111827" />
@@ -74,7 +75,7 @@ function CustomTabBar({ state, descriptors, navigation }: any) {
             style={styles.pill}
             onPress={() => {
               setMenuOpen(false);
-              navigation.navigate('post');
+              router.push('/(pill)/post');
             }}
           >
             <Ionicons name="create-outline" size={18} color="#111827" />

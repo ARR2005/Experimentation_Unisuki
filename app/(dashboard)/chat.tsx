@@ -2,7 +2,8 @@ import { Ionicons } from '@expo/vector-icons'
 import React from 'react'
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native'
 
-const items = Array.from({ length: 6 }).map((_, i) => ({ id: `u${i}`, name: `Contact ${i + 1}`, last: 'Last message preview goes here' }))
+const DB = require('../../DB.json')
+const chats = Object.values(DB.chats || {}) as any[]
 
 export default function Chat() {
   return (
@@ -20,15 +21,15 @@ export default function Chat() {
 
         {/* Chat list */}
         <View>
-          {items.map((it) => (
-            <TouchableOpacity key={it.id} className="flex-row items-center py-3 border-b border-gray-100">
+          {chats.map((it, idx) => (
+            <TouchableOpacity key={idx} className="flex-row items-center py-3 border-b border-gray-100">
               <View className="w-12 h-12 rounded-full bg-gray-100 items-center justify-center mr-3">
                 <Ionicons name="image-outline" size={20} color="#9CA3AF" />
               </View>
-                
+
               <View className="flex-1">
-                <Text className="font-medium">{it.name}</Text>
-                <View className="h-3 bg-gray-200 rounded mt-2 w-3/4" />
+                <Text className="font-medium">{it.username}</Text>
+                <Text className="text-sm text-gray-500 mt-1">{it.recent_chat}</Text>
               </View>
             </TouchableOpacity>
           ))}

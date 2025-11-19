@@ -1,0 +1,282 @@
+{
+  "items": {
+    "item_001": {
+      "title": "Vintage Denim Jacket",
+      "image_uri": "gs://your-storage-bucket/images/denim_jacket_main.jpg",
+      "description": "Classic blue denim jacket, lightly distressed, perfect for a casual look. Size M.",
+      "support_images": [
+        "gs://your-storage-bucket/images/denim_jacket_back.jpg",
+        "gs://your-storage-bucket/images/denim_jacket_detail.jpg"
+      ],
+      "price": 45.99,
+      "type": "clothes",
+      "size": "M"
+    },
+    "item_002": {
+      "title": "Introduction to Algorithms, 4th Ed.",
+      "image_uri": "gs://your-storage-bucket/images/algo_book_main.jpg",
+      "description": "Standard textbook for algorithms and data structures. Excellent condition.",
+      "support_images": [],
+      "price": 60.00,
+      "type": "books",
+      "size": null
+    },
+    "item_003": {
+      "title": "Wireless Noise Cancelling Headphones",
+      "image_uri": "gs://your-storage-bucket/images/headphones_main.jpg",
+      "description": "Over-ear headphones with ANC and 30-hour battery life. Includes original box.",
+      "support_images": [
+        "gs://your-storage-bucket/images/headphones_case.jpg"
+      ],
+      "price": 129.50,
+      "type": "gadgets",
+      "size": null
+    },
+    "item_004": {
+      "title": "Men's Running Shoes - Neon Yellow",
+      "image_uri": "gs://your-storage-bucket/images/running_shoes_main.jpg",
+      "description": "Lightweight, breathable running shoes. Used for one season. Size L (approx. US 10).",
+      "support_images": [
+        "gs://your-storage-bucket/images/running_shoes_sole.jpg",
+        "gs://your-storage-bucket/images/running_shoes_side.jpg"
+      ],
+      "price": 35.00,
+      "type": "shoes",
+      "size": "L"
+    },
+    "item_005": {
+      "title": "Women's Little Black Dress",
+      "image_uri": "gs://your-storage-bucket/images/lbd_main.jpg",
+      "description": "Elegant knee-length black dress. Perfect for cocktail parties.",
+      "support_images": [
+        "gs://your-storage-bucket/images/lbd_model.jpg"
+      ],
+      "price": 55.00,
+      "type": "clothes",
+      "size": "S"
+    },
+    "item_006": {
+      "title": "The Hitchhiker's Guide to the Galaxy",
+      "image_uri": "gs://your-storage-bucket/images/hitchhikers_book.jpg",
+      "description": "Paperback copy of the classic sci-fi novel. Slightly worn cover.",
+      "support_images": [],
+      "price": 5.50,
+      "type": "books",
+      "size": null
+    },
+    "item_007": {
+      "title": "Portable Bluetooth Speaker",
+      "image_uri": "gs://your-storage-bucket/images/bluetooth_speaker.jpg",
+      "description": "Waterproof speaker with great bass. Battery lasts up to 10 hours.",
+      "support_images": [
+        "gs://your-storage-bucket/images/speaker_box.jpg",
+        "gs://your-storage-bucket/images/speaker_size.jpg",
+        "gs://your-storage-bucket/images/speaker_ports.jpg"
+      ],
+      "price": 49.99,
+      "type": "gadgets",
+      "size": null
+    },
+    "item_008": {
+      "title": "High-Top Canvas Sneakers",
+      "image_uri": "gs://your-storage-bucket/images/canvas_sneakers.jpg",
+      "description": "White canvas high-top shoes. Brand new condition.",
+      "support_images": [],
+      "price": 40.00,
+      "type": "shoes",
+      "size": "XXL"
+    },
+    "item_009": {
+      "title": "Cozy Knit Sweater",
+      "image_uri": "gs://your-storage-bucket/images/sweater_main.jpg",
+      "description": "Oversized, thick cable-knit sweater, perfect for winter.",
+      "support_images": [],
+      "price": 30.00,
+      "type": "clothes",
+      "size": "XXL"
+    },
+    "item_010": {
+      "title": "Data Science Handbook",
+      "image_uri": "gs://your-storage-bucket/images/data_science_book.jpg",
+      "description": "Comprehensive guide to machine learning and statistical modeling.",
+      "support_images": [],
+      "price": 75.00,
+      "type": "books",
+      "size": null
+    },
+    "item_011": {
+      "title": "Smart Fitness Watch",
+      "image_uri": "gs://your-storage-bucket/images/fitness_watch.jpg",
+      "description": "Tracks steps, heart rate, and sleep. Includes charger.",
+      "support_images": [
+        "gs://your-storage-bucket/images/watch_screen.jpg"
+      ],
+      "price": 85.00,
+      "type": "gadgets",
+      "size": null
+    },
+    "item_012": {
+      "title": "Leather Dress Boots",
+      "image_uri": "gs://your-storage-bucket/images/dress_boots.jpg",
+      "description": "High-quality leather boots, barely worn. Fits size XS (approx. US 7).",
+      "support_images": [
+        "gs://your-storage-bucket/images/dress_boots_side.jpg"
+      ],
+      "price": 150.00,
+      "type": "shoes",
+      "size": "XS"
+    },
+    "item_013": {
+      "title": "Striped T-Shirt",
+      "image_uri": "gs://your-storage-bucket/images/tshirt_striped.jpg",
+      "description": "Cotton blend, navy and white stripes. Comfortable fit.",
+      "support_images": [],
+      "price": 12.00,
+      "type": "clothes",
+      "size": "XXS"
+    },
+    "item_014": {
+      "title": "Used College Calculus Textbook",
+      "image_uri": "gs://your-storage-bucket/images/calculus_book.jpg",
+      "description": "Used for Math 101. Some highlighting on the first few chapters.",
+      "support_images": [],
+      "price": 25.00,
+      "type": "books",
+      "size": null
+    },
+    "item_015": {
+      "title": "Ergonomic Mechanical Keyboard",
+      "image_uri": "gs://your-storage-bucket/images/keyboard_main.jpg",
+      "description": "Split ergonomic design, satisfying tactile click. USB-C connection.",
+      "support_images": [
+        "gs://your-storage-bucket/images/keyboard_detail.jpg",
+        "gs://your-storage-bucket/images/keyboard_back.jpg"
+      ],
+      "price": 99.99,
+      "type": "gadgets",
+      "size": null
+    },
+    "item_016": {
+      "title": "Hiking Boots - Waterproof",
+      "image_uri": "gs://your-storage-bucket/images/hiking_boots.jpg",
+      "description": "Durable, waterproof hiking boots with excellent ankle support. Size XL (approx. US 12).",
+      "support_images": [
+        "gs://your-storage-bucket/images/hiking_boots_tread.jpg"
+      ],
+      "price": 80.00,
+      "type": "shoes",
+      "size": "XL"
+    },
+    "item_017": {
+      "title": "Business Blazer",
+      "image_uri": "gs://your-storage-bucket/images/blazer_grey.jpg",
+      "description": "Structured grey blazer, single-button closure. Professionally cleaned.",
+      "support_images": [],
+      "price": 70.00,
+      "type": "clothes",
+      "size": "XL"
+    },
+    "item_018": {
+      "title": "Women's Lightweight Hoodie",
+      "image_uri": "gs://your-storage-bucket/images/hoodie_pink.jpg",
+      "description": "Soft pink cotton hoodie. Perfect for spring/fall.",
+      "support_images": [],
+      "price": 25.00,
+      "type": "clothes",
+      "size": "XS"
+    },
+    "item_019": {
+      "title": "Organic Chemistry Textbook, 8th Ed.",
+      "image_uri": "gs://your-storage-bucket/images/organic_chem.jpg",
+      "description": "Required text for sophomore organic chemistry. Minor wear and tear.",
+      "support_images": [
+        "gs://your-storage-bucket/images/organic_chem_binding.jpg"
+      ],
+      "price": 40.00,
+      "type": "books",
+      "size": null
+    },
+    "item_020": {
+      "title": "Portable Drawing Tablet",
+      "image_uri": "gs://your-storage-bucket/images/drawing_tablet.jpg",
+      "description": "8-inch screen, pressure-sensitive stylus included. Great for digital artists on the go.",
+      "support_images": [
+        "gs://your-storage-bucket/images/drawing_tablet_stylus.jpg"
+      ],
+      "price": 199.00,
+      "type": "gadgets",
+      "size": null
+    },
+    "item_021": {
+      "title": "Soccer Cleats",
+      "image_uri": "gs://your-storage-bucket/images/soccer_cleats.jpg",
+      "description": "Used for one soccer season. Good grip on natural grass.",
+      "support_images": [],
+      "price": 45.00,
+      "type": "shoes",
+      "size": "M"
+    },
+    "item_022": {
+      "title": "Silk Scarf",
+      "image_uri": "gs://your-storage-bucket/images/silk_scarf.jpg",
+      "description": "100% pure silk scarf with geometric pattern. Dry-clean only.",
+      "support_images": [
+        "gs://your-storage-bucket/images/silk_scarf_detail.jpg"
+      ],
+      "price": 18.50,
+      "type": "clothes",
+      "size": "L"
+    },
+    "item_023": {
+      "title": "A Brief History of Time",
+      "image_uri": "gs://your-storage-bucket/images/brief_history.jpg",
+      "description": "Hardcover edition, excellent gift quality.",
+      "support_images": [],
+      "price": 15.00,
+      "type": "books",
+      "size": null
+    }
+  },
+  "chats": {
+    "chat_user_123456789_with_seller": {
+      "username": "User_123456789",
+      "overall_conversation": [
+        {"sender": "User_123456789", "message": "Is the jacket still available?", "timestamp": "2025-11-18T10:00:00Z"},
+        {"sender": "Seller_987654321", "message": "Yes, it is!", "timestamp": "2025-11-18T10:05:00Z"}
+      ],
+      "recent_chat": "Yes, it is!"
+    }
+  },
+  "notifications": {
+    "notif_001": {
+      "user_id": 987654321,
+      "type": "Item created",
+      "message": "Your item 'Vintage Denim Jacket' has been listed.",
+      "timestamp": "2025-11-19T09:00:00Z",
+      "read": false
+    },
+    "notif_002": {
+      "user_id": 987654321,
+      "type": "buyer reserved",
+      "message": "User_123456789 has reserved 'Introduction to Algorithms'.",
+      "timestamp": "2025-11-19T09:05:00Z",
+      "read": false
+    }
+  },
+  "users": {
+    "user_123456789": {
+      "name": "Alex Johnson",
+      "id": 123456789,
+      "password_hash": "hashed_password_string_1",
+      "email": "alex.j@example.com",
+      "address": "123 Market St"
+    },
+    "user_987654321": {
+      "name": "Maria Rodriguez",
+      "id": 987654321,
+      "password_hash": "hashed_password_string_2",
+      "email": "maria.r@example.com",
+      "phone": "+15551234"
+    }
+  }
+}

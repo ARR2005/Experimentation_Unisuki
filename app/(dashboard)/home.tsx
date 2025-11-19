@@ -1,22 +1,21 @@
-import { Ionicons } from '@expo/vector-icons'
-import React, { useRef, useState } from 'react'
+import { Ionicons } from '@expo/vector-icons';
+import React, { useRef, useState } from 'react';
 import {
     Dimensions,
+    Image,
     NativeScrollEvent,
     NativeSyntheticEvent,
     ScrollView,
     Text,
     TouchableOpacity,
-    View
-} from 'react-native'
+    View,
+} from 'react-native';
 
 const { width } = Dimensions.get('window')
 
-const carouselItems = [
-  { id: 'c1' },
-  { id: 'c2' },
-  { id: 'c3' },
-]
+const DB = require('../../DB.json');
+
+const carouselItems = Object.values(DB.items).slice(0,3);
 
 const categories = [
   { id: 'cat1', label: 'Shoes', icon: 'walk' },
@@ -26,10 +25,11 @@ const categories = [
   { id: 'cat5', label: 'Medical', icon: 'medkit' },
 ]
 
-const products = Array.from({ length: 8 }).map((_, i) => ({
-  id: `p${i}`,
-  title: `Product ${i + 1}`,
-  price: `${(i + 1) * 5}`,
+const products = Object.entries(DB.items).map(([key, item]: any) => ({
+  id: key,
+  title: item.title,
+  image_uri: item.image_uri,
+  price: item.price,
 }))
 
 export default function Home() {
@@ -57,10 +57,16 @@ export default function Home() {
             scrollEventThrottle={16}
             ref={scrollRef}
           >
-            {carouselItems.map((c) => (
-              <View key={c.id} style={{ width }} className="px-4">
-                <View className="bg-gray-200 rounded-xl h-44 items-center justify-center">
-                  <Ionicons name="image-outline" size={42} color="#9CA3AF" />
+            {carouselItems.map((c: any, idx: number) => (
+              <View key={idx} style={{ width }} className="px-4">
+                <View className="bg-gray-200 rounded-xl h-44 overflow-hidden">
+                  {c.image_uri ? (
+                    <Image source={{ uri: c.image_uri }} style={{ width: '100%', height: '100%' }} resizeMode="cover" />
+                  ) : (
+                    <View className="flex-1 items-center justify-center">
+                      <Ionicons name="image-outline" size={42} color="#9CA3AF" />
+                    </View>
+                  )}
                 </View>
               </View>
             ))}
@@ -96,8 +102,14 @@ export default function Home() {
         <View className="mt-6 flex-row flex-wrap justify-between">
           {products.map((p) => (
             <View key={p.id} className="w-[48%] mb-4">
-              <View className="bg-gray-100 rounded-lg h-40 items-center justify-center">
-                <Ionicons name="image-outline" size={36} color="#9CA3AF" />
+              <View className="bg-gray-100 rounded-lg h-40 overflow-hidden">
+                {p.image_uri ? (
+                  <Image source={{ uri: p.image_uri }} style={{ width: '100%', height: '100%' }} resizeMode="cover" />
+                ) : (
+                  <View className="flex-1 items-center justify-center">
+                    <Ionicons name="image-outline" size={36} color="#9CA3AF" />
+                  </View>
+                )}
               </View>
 
               <View className="mt-3">
@@ -105,7 +117,7 @@ export default function Home() {
                 <View className="flex-row items-center justify-between mt-2">
                   <Text className="text-sm font-bold">₱ {p.price}</Text>
                   <TouchableOpacity className="bg-black px-3 py-1 rounded-md">
-                    <Text className="text-white text-xs">ADD TO BAG</Text>
+                    <Text className="text-white text-xs">Check Item</Text>
                   </TouchableOpacity>
                 </View>
               </View>

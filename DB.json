@@ -2,11 +2,11 @@
   "items": {
     "item_001": {
       "title": "Vintage Denim Jacket",
-      "image_uri": "gs://your-storage-bucket/images/denim_jacket_main.jpg",
-      "description": "Classic blue denim jacket, lightly distressed, perfect for a casual look. Size M.",
+      "image_uri": "public/1.png",
+      "description": "Classic blue denim jacket, lightly distressed, perfect for a casual look. Size M. Image file: public/1.png",
       "support_images": [
-        "gs://your-storage-bucket/images/denim_jacket_back.jpg",
-        "gs://your-storage-bucket/images/denim_jacket_detail.jpg"
+        "https://storage.googleapis.com/your-storage-bucket/images/denim_jacket_back.jpg",
+        "https://storage.googleapis.com/your-storage-bucket/images/denim_jacket_detail.jpg"
       ],
       "price": 45.99,
       "type": "clothes",
@@ -14,8 +14,8 @@
     },
     "item_002": {
       "title": "Introduction to Algorithms, 4th Ed.",
-      "image_uri": "gs://your-storage-bucket/images/algo_book_main.jpg",
-      "description": "Standard textbook for algorithms and data structures. Excellent condition.",
+      "image_uri": "public/10.png",
+      "description": "Standard textbook for algorithms and data structures. Excellent condition. Image file: public/10.png",
       "support_images": [],
       "price": 60.00,
       "type": "books",
@@ -23,10 +23,10 @@
     },
     "item_003": {
       "title": "Wireless Noise Cancelling Headphones",
-      "image_uri": "gs://your-storage-bucket/images/headphones_main.jpg",
-      "description": "Over-ear headphones with ANC and 30-hour battery life. Includes original box.",
+      "image_uri": "public/2.png",
+      "description": "Over-ear headphones with ANC and 30-hour battery life. Includes original box. Image file: public/2.png",
       "support_images": [
-        "gs://your-storage-bucket/images/headphones_case.jpg"
+        "https://storage.googleapis.com/your-storage-bucket/images/headphones_case.jpg"
       ],
       "price": 129.50,
       "type": "gadgets",
@@ -34,11 +34,11 @@
     },
     "item_004": {
       "title": "Men's Running Shoes - Neon Yellow",
-      "image_uri": "gs://your-storage-bucket/images/running_shoes_main.jpg",
-      "description": "Lightweight, breathable running shoes. Used for one season. Size L (approx. US 10).",
+      "image_uri": "public/3.png",
+      "description": "Lightweight, breathable running shoes. Used for one season. Size L (approx. US 10). Image file: public/3.png",
       "support_images": [
-        "gs://your-storage-bucket/images/running_shoes_sole.jpg",
-        "gs://your-storage-bucket/images/running_shoes_side.jpg"
+        "https://storage.googleapis.com/your-storage-bucket/images/running_shoes_sole.jpg",
+        "https://storage.googleapis.com/your-storage-bucket/images/running_shoes_side.jpg"
       ],
       "price": 35.00,
       "type": "shoes",
@@ -46,10 +46,10 @@
     },
     "item_005": {
       "title": "Women's Little Black Dress",
-      "image_uri": "gs://your-storage-bucket/images/lbd_main.jpg",
-      "description": "Elegant knee-length black dress. Perfect for cocktail parties.",
+      "image_uri": "public/4.png",
+      "description": "Elegant knee-length black dress. Perfect for cocktail parties. Image file: public/4.png",
       "support_images": [
-        "gs://your-storage-bucket/images/lbd_model.jpg"
+        "https://storage.googleapis.com/your-storage-bucket/images/lbd_model.jpg"
       ],
       "price": 55.00,
       "type": "clothes",
@@ -57,8 +57,8 @@
     },
     "item_006": {
       "title": "The Hitchhiker's Guide to the Galaxy",
-      "image_uri": "gs://your-storage-bucket/images/hitchhikers_book.jpg",
-      "description": "Paperback copy of the classic sci-fi novel. Slightly worn cover.",
+      "image_uri": "public/5.png",
+      "description": "Paperback copy of the classic sci-fi novel. Slightly worn cover. Image file: public/5.png",
       "support_images": [],
       "price": 5.50,
       "type": "books",
@@ -66,12 +66,12 @@
     },
     "item_007": {
       "title": "Portable Bluetooth Speaker",
-      "image_uri": "gs://your-storage-bucket/images/bluetooth_speaker.jpg",
-      "description": "Waterproof speaker with great bass. Battery lasts up to 10 hours.",
+      "image_uri": "public/6.png",
+      "description": "Waterproof speaker with great bass. Battery lasts up to 10 hours. Image file: public/6.png",
       "support_images": [
-        "gs://your-storage-bucket/images/speaker_box.jpg",
-        "gs://your-storage-bucket/images/speaker_size.jpg",
-        "gs://your-storage-bucket/images/speaker_ports.jpg"
+        "https://storage.googleapis.com/your-storage-bucket/images/speaker_box.jpg",
+        "https://storage.googleapis.com/your-storage-bucket/images/speaker_size.jpg",
+        "https://storage.googleapis.com/your-storage-bucket/images/speaker_ports.jpg"
       ],
       "price": 49.99,
       "type": "gadgets",
@@ -79,8 +79,8 @@
     },
     "item_008": {
       "title": "High-Top Canvas Sneakers",
-      "image_uri": "gs://your-storage-bucket/images/canvas_sneakers.jpg",
-      "description": "White canvas high-top shoes. Brand new condition.",
+      "image_uri": "public/7.png",
+      "description": "White canvas high-top shoes. Brand new condition. Image file: public/7.png",
       "support_images": [],
       "price": 40.00,
       "type": "shoes",
@@ -88,8 +88,8 @@
     },
     "item_009": {
       "title": "Cozy Knit Sweater",
-      "image_uri": "gs://your-storage-bucket/images/sweater_main.jpg",
-      "description": "Oversized, thick cable-knit sweater, perfect for winter.",
+      "image_uri": "public/8.png",
+      "description": "Oversized, thick cable-knit sweater, perfect for winter. Image file: public/8.png",
       "support_images": [],
       "price": 30.00,
       "type": "clothes",
@@ -97,8 +97,8 @@
     },
     "item_010": {
       "title": "Data Science Handbook",
-      "image_uri": "gs://your-storage-bucket/images/data_science_book.jpg",
-      "description": "Comprehensive guide to machine learning and statistical modeling.",
+      "image_uri": "public/9.png",
+      "description": "Comprehensive guide to machine learning and statistical modeling. Image file: public/9.png",
       "support_images": [],
       "price": 75.00,
       "type": "books",
@@ -106,10 +106,10 @@
     },
     "item_011": {
       "title": "Smart Fitness Watch",
-      "image_uri": "gs://your-storage-bucket/images/fitness_watch.jpg",
-      "description": "Tracks steps, heart rate, and sleep. Includes charger.",
+      "image_uri": "580996031_1388862962605084_4748162696121341656_n.jpg",
+      "description": "Tracks steps, heart rate, and sleep. Includes charger. Image file: 580996031_1388862962605084_4748162696121341656_n.jpg",
       "support_images": [
-        "gs://your-storage-bucket/images/watch_screen.jpg"
+        "https://storage.googleapis.com/your-storage-bucket/images/watch_screen.jpg"
       ],
       "price": 85.00,
       "type": "gadgets",
@@ -117,10 +117,10 @@
     },
     "item_012": {
       "title": "Leather Dress Boots",
-      "image_uri": "gs://your-storage-bucket/images/dress_boots.jpg",
-      "description": "High-quality leather boots, barely worn. Fits size XS (approx. US 7).",
+      "image_uri": "583800591_25313974108211934_7276409588752668376_n.webp",
+      "description": "High-quality leather boots, barely worn. Fits size XS (approx. US 7). Image file: 583800591_25313974108211934_7276409588752668376_n.webp",
       "support_images": [
-        "gs://your-storage-bucket/images/dress_boots_side.jpg"
+        "https://storage.googleapis.com/your-storage-bucket/images/dress_boots_side.jpg"
       ],
       "price": 150.00,
       "type": "shoes",
@@ -128,8 +128,8 @@
     },
     "item_013": {
       "title": "Striped T-Shirt",
-      "image_uri": "gs://your-storage-bucket/images/tshirt_striped.jpg",
-      "description": "Cotton blend, navy and white stripes. Comfortable fit.",
+      "image_uri": "584460452_122190123446553923_9160252425489159450_n.jpg",
+      "description": "Cotton blend, navy and white stripes. Comfortable fit. Image file: 584460452_122190123446553923_9160252425489159450_n.jpg",
       "support_images": [],
       "price": 12.00,
       "type": "clothes",
@@ -137,8 +137,8 @@
     },
     "item_014": {
       "title": "Used College Calculus Textbook",
-      "image_uri": "gs://your-storage-bucket/images/calculus_book.jpg",
-      "description": "Used for Math 101. Some highlighting on the first few chapters.",
+      "image_uri": "584674248_25313974458211899_797891218850702209_n.webp",
+      "description": "Used for Math 101. Some highlighting on the first few chapters. Image file: 584674248_25313974458211899_797891218850702209_n.webp",
       "support_images": [],
       "price": 25.00,
       "type": "books",
@@ -146,11 +146,11 @@
     },
     "item_015": {
       "title": "Ergonomic Mechanical Keyboard",
-      "image_uri": "gs://your-storage-bucket/images/keyboard_main.jpg",
-      "description": "Split ergonomic design, satisfying tactile click. USB-C connection.",
+      "image_uri": "584785180_122215253666100233_1816770872144955023_n.jpg",
+      "description": "Split ergonomic design, satisfying tactile click. USB-C connection. Image file: 584785180_122215253666100233_1816770872144955023_n.jpg",
       "support_images": [
-        "gs://your-storage-bucket/images/keyboard_detail.jpg",
-        "gs://your-storage-bucket/images/keyboard_back.jpg"
+        "https://storage.googleapis.com/your-storage-bucket/images/keyboard_detail.jpg",
+        "https://storage.googleapis.com/your-storage-bucket/images/keyboard_back.jpg"
       ],
       "price": 99.99,
       "type": "gadgets",
@@ -158,10 +158,10 @@
     },
     "item_016": {
       "title": "Hiking Boots - Waterproof",
-      "image_uri": "gs://your-storage-bucket/images/hiking_boots.jpg",
-      "description": "Durable, waterproof hiking boots with excellent ankle support. Size XL (approx. US 12).",
+      "image_uri": "585349204_1527198915210325_5500161613672740274_n.jpg",
+      "description": "Durable, waterproof hiking boots with excellent ankle support. Size XL (approx. US 12). Image file: 585349204_1527198915210325_5500161613672740274_n.jpg",
       "support_images": [
-        "gs://your-storage-bucket/images/hiking_boots_tread.jpg"
+        "https://storage.googleapis.com/your-storage-bucket/images/hiking_boots_tread.jpg"
       ],
       "price": 80.00,
       "type": "shoes",
@@ -169,8 +169,8 @@
     },
     "item_017": {
       "title": "Business Blazer",
-      "image_uri": "gs://your-storage-bucket/images/blazer_grey.jpg",
-      "description": "Structured grey blazer, single-button closure. Professionally cleaned.",
+      "image_uri": "587630053_1339833253924419_2590473242897672863_n.jpg",
+      "description": "Structured grey blazer, single-button closure. Professionally cleaned. Image file: 587630053_1339833253924419_2590473242897672863_n.jpg",
       "support_images": [],
       "price": 70.00,
       "type": "clothes",
@@ -178,8 +178,8 @@
     },
     "item_018": {
       "title": "Women's Lightweight Hoodie",
-      "image_uri": "gs://your-storage-bucket/images/hoodie_pink.jpg",
-      "description": "Soft pink cotton hoodie. Perfect for spring/fall.",
+      "image_uri": "587683435_1339833273924417_8938361591948069378_n.jpg",
+      "description": "Soft pink cotton hoodie. Perfect for spring/fall. Image file: 587683435_1339833273924417_8938361591948069378_n.jpg",
       "support_images": [],
       "price": 25.00,
       "type": "clothes",
@@ -187,10 +187,10 @@
     },
     "item_019": {
       "title": "Organic Chemistry Textbook, 8th Ed.",
-      "image_uri": "gs://your-storage-bucket/images/organic_chem.jpg",
-      "description": "Required text for sophomore organic chemistry. Minor wear and tear.",
+      "image_uri": "588110580_1339833167257761_4329284501459614886_n.jpg",
+      "description": "Required text for sophomore organic chemistry. Minor wear and tear. Image file: 588110580_1339833167257761_4329284501459614886_n.jpg",
       "support_images": [
-        "gs://your-storage-bucket/images/organic_chem_binding.jpg"
+        "https://storage.googleapis.com/your-storage-bucket/images/organic_chem_binding.jpg"
       ],
       "price": 40.00,
       "type": "books",
@@ -198,10 +198,10 @@
     },
     "item_020": {
       "title": "Portable Drawing Tablet",
-      "image_uri": "gs://your-storage-bucket/images/drawing_tablet.jpg",
-      "description": "8-inch screen, pressure-sensitive stylus included. Great for digital artists on the go.",
+      "image_uri": "588520770_1339833307257747_9190572431139485094_n.jpg",
+      "description": "8-inch screen, pressure-sensitive stylus included. Great for digital artists on the go. Image file: 588520770_1339833307257747_9190572431139485094_n.jpg",
       "support_images": [
-        "gs://your-storage-bucket/images/drawing_tablet_stylus.jpg"
+        "https://storage.googleapis.com/your-storage-bucket/images/drawing_tablet_stylus.jpg"
       ],
       "price": 199.00,
       "type": "gadgets",
@@ -209,8 +209,8 @@
     },
     "item_021": {
       "title": "Soccer Cleats",
-      "image_uri": "gs://your-storage-bucket/images/soccer_cleats.jpg",
-      "description": "Used for one soccer season. Good grip on natural grass.",
+      "image_uri": "588997828_1339833337257744_6902194469641380985_n.jpg",
+      "description": "Used for one soccer season. Good grip on natural grass. Image file: 588997828_1339833337257744_6902194469641380985_n.jpg",
       "support_images": [],
       "price": 45.00,
       "type": "shoes",
@@ -218,10 +218,10 @@
     },
     "item_022": {
       "title": "Silk Scarf",
-      "image_uri": "gs://your-storage-bucket/images/silk_scarf.jpg",
+      "image_uri": "https://storage.googleapis.com/your-storage-bucket/images/silk_scarf.jpg",
       "description": "100% pure silk scarf with geometric pattern. Dry-clean only.",
       "support_images": [
-        "gs://your-storage-bucket/images/silk_scarf_detail.jpg"
+        "https://storage.googleapis.com/your-storage-bucket/images/silk_scarf_detail.jpg"
       ],
       "price": 18.50,
       "type": "clothes",
@@ -229,7 +229,7 @@
     },
     "item_023": {
       "title": "A Brief History of Time",
-      "image_uri": "gs://your-storage-bucket/images/brief_history.jpg",
+      "image_uri": "https://storage.googleapis.com/your-storage-bucket/images/brief_history.jpg",
       "description": "Hardcover edition, excellent gift quality.",
       "support_images": [],
       "price": 15.00,

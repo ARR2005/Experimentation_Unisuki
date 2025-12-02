@@ -96,7 +96,7 @@ const Home = () => {
               <View className="flex-row flex-wrap p-2 rounded-md" style={{ marginHorizontal: -8 }}>
                 {products.map((p) => (
                   <View key={p.id} className="w-1/2" style={{ paddingHorizontal: 6, marginBottom: 12 }}>
-                    <View className="bg-white rounded-lg shadow-sm">
+                    <View className="bg-white shadow-sm">
                       <View className="bg-gray-100 rounded-md overflow-hidden" style={{ aspectRatio: 1 }}>
                         {p.image_uri ? (
                           <Image source={{ uri: p.image_uri }} className="w-full h-full" resizeMode="cover" />

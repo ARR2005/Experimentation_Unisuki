@@ -1,4 +1,3 @@
-import { SocialConnections } from '@/components/social-connections';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -27,6 +26,11 @@ export function SignUpForm() {
   const rePasswordInputRef = React.useRef<TextInput>(null);
   const [isModalVisible, setModalVisible] = React.useState(false);
   const router = useRouter();
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [rePassword, setRePassword] = React.useState('');
+  const [errors, setErrors] = React.useState({ email: '', password: '', rePassword: '', form: '' });
+  const [loading, setLoading] = React.useState(false);
 
   function onEmailSubmitEditing() {
     passwordInputRef.current?.focus();
@@ -36,13 +40,42 @@ export function SignUpForm() {
     rePasswordInputRef.current?.focus();
   }
 
+  function validate() {
+    const newErrors = { email: '', password: '', rePassword: '', form: '' };
+    if (!email) {
+      newErrors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      newErrors.email = 'Email is invalid';
+    }
+    if (!password) {
+      newErrors.password = 'Password is required';
+    } else if (password.length < 6) {
+      newErrors.password = 'Password must be at least 6 characters';
+    }
+    if (password !== rePassword) {
+      newErrors.rePassword = 'Passwords do not match';
+    }
+    setErrors(newErrors);
+    return !newErrors.email && !newErrors.password && !newErrors.rePassword;
+  }
+
   function onSubmit() {
-    setModalVisible(true);
+    if (validate()) {
+      setModalVisible(true);
+    }
   }
 
   function handleAccept() {
     setModalVisible(false);
-    router.push('/(onboarding)');
+    setLoading(true);
+    setErrors({ email: '', password: '', rePassword: '', form: '' });
+    setTimeout(() => {
+      // Simulate API call
+      console.log('Signed up with:', email, password);
+      // for now, we'll just assume it's successful
+      router.push('/(onboarding)');
+      setLoading(false);
+    }, 2000);
   }
 
   return (
@@ -56,6 +89,7 @@ export function SignUpForm() {
             </CardDescription>
           </CardHeader>
           <CardContent className="gap-6">
+            {errors.form ? <Text className="text-red-500 text-center">{errors.form}</Text> : null}
             <View className="gap-6">
               <View className="gap-1.5">
                 <Label htmlFor="email">Email</Label>
@@ -68,7 +102,11 @@ export function SignUpForm() {
                   onSubmitEditing={onEmailSubmitEditing}
                   returnKeyType="next"
                   submitBehavior="submit"
+                  value={email}
+                  onChangeText={setEmail}
+                  editable={!loading}
                 />
+                {errors.email ? <Text className="text-red-500">{errors.email}</Text> : null}
               </View>
               <View className="gap-1.5">
                 <View className="flex-row items-center">
@@ -80,7 +118,11 @@ export function SignUpForm() {
                   secureTextEntry
                   returnKeyType="next"
                   onSubmitEditing={onPasswordSubmitEditing}
+                  value={password}
+                  onChangeText={setPassword}
+                  editable={!loading}
                 />
+                {errors.password ? <Text className="text-red-500">{errors.password}</Text> : null}
               </View>
               <View className="gap-1.5">
                 <View className="flex-row items-center">
@@ -92,11 +134,15 @@ export function SignUpForm() {
                   secureTextEntry
                   returnKeyType="send"
                   onSubmitEditing={onSubmit}
+                  value={rePassword}
+                  onChangeText={setRePassword}
+                  editable={!loading}
                 />
+                {errors.rePassword ? <Text className="text-red-500">{errors.rePassword}</Text> : null}
               </View>
 
-              <Button className="w-full bg-green-500" onPress={onSubmit}>
-                <Text> Sign Up</Text>
+              <Button className="w-full bg-green-500" onPress={onSubmit} disabled={loading}>
+                {loading ? <Text>Creating account...</Text> : <Text> Sign Up</Text>}
               </Button>
             </View>
             <Text className="text-center text-sm">
@@ -121,11 +167,11 @@ export function SignUpForm() {
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
-            <Button onPress={() => setModalVisible(false)}>
+            <Button onPress={() => setModalVisible(false)} disabled={loading}>
               <Text>Decline</Text>
             </Button>
-            <Button onPress={handleAccept}>
-              <Text>Accept</Text>
+            <Button onPress={handleAccept} disabled={loading}>
+              {loading ? <Text>Loading...</Text> : <Text>Accept</Text>}
             </Button>
           </DialogFooter>
         </DialogContent>

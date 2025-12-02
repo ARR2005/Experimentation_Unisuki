@@ -16,13 +16,43 @@ import { Pressable, type TextInput, View } from 'react-native';
 export function SignInForm() {
   const router = useRouter();
   const passwordInputRef = React.useRef<TextInput>(null);
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [errors, setErrors] = React.useState({ email: '', password: '', form: '' });
+  const [loading, setLoading] = React.useState(false);
 
   function onEmailSubmitEditing() {
     passwordInputRef.current?.focus();
   }
 
+  function validate() {
+    const newErrors = { email: '', password: '', form: '' };
+    if (!email) {
+      newErrors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      newErrors.email = 'Email is invalid';
+    }
+    if (!password) {
+      newErrors.password = 'Password is required';
+    }
+    setErrors(newErrors);
+    return !newErrors.email && !newErrors.password;
+  }
+
   function onSubmit() {
-    router.push('/(dashboard)/home');
+    if (validate()) {
+      setLoading(true);
+      setErrors({ email: '', password: '', form: '' });
+      setTimeout(() => {
+
+        if (email === 'admin@gmail.com' && password === 'root') {
+          router.push('/(dashboard)/home');
+        } else {
+          setErrors({ email: '', password: '', form: 'Invalid email or password' });
+        }
+        setLoading(false);
+      }, 2000);
+    }
   }
 
   return (
@@ -35,6 +65,7 @@ export function SignInForm() {
           </CardDescription>
         </CardHeader>
         <CardContent className="gap-6">
+          {errors.form ? <Text className="text-red-500 text-center">{errors.form}</Text> : null}
           <View className="gap-6">
             <View className="gap-1.5">
               <Label htmlFor="email">Email</Label>
@@ -47,7 +78,11 @@ export function SignInForm() {
                 onSubmitEditing={onEmailSubmitEditing}
                 returnKeyType="next"
                 submitBehavior="submit"
+                value={email}
+                onChangeText={setEmail}
+                editable={!loading}
               />
+              {errors.email ? <Text className="text-red-500">{errors.email}</Text> : null}
             </View>
             <View className="gap-1.5">
               <View className="flex-row items-center">
@@ -68,10 +103,14 @@ export function SignInForm() {
                 secureTextEntry
                 returnKeyType="send"
                 onSubmitEditing={onSubmit}
+                value={password}
+                onChangeText={setPassword}
+                editable={!loading}
               />
+              {errors.password ? <Text className="text-red-500">{errors.password}</Text> : null}
             </View>
-            <Button className="w-full bg-green-500 " onPress={onSubmit}>
-              <Text>Continue</Text>
+            <Button className="w-full bg-green-500 " onPress={onSubmit} disabled={loading}>
+              {loading ? <Text>Loading...</Text> : <Text>Continue</Text>}
             </Button>
           </View>
           <Text className="text-center text-sm">

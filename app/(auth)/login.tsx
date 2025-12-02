@@ -1,19 +1,20 @@
 import { SignInForm } from '@/components/sign-in-form';
 import React from 'react';
-import { ScrollView, View } from 'react-native';
+import { Image, ScrollView, View } from 'react-native';
 
-const Login = () => {
+const SignIn = () => {
   return (
     <ScrollView
+      className="flex-1"
+      contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
       keyboardShouldPersistTaps="handled"
-      contentContainerClassName="sm:flex-1 items-center justify-end p-4 py-8 sm:py-4 sm:p-6 mt-safe"
-      keyboardDismissMode="interactive">
-      <View className="w-full max-w-sm mt-[350px]">
+    >
+      <View className="items-center">
+        <Image source={require('../../assets/icons/Splash_Logo.png')} className="absolute top-[-300] w-64 h-64 justify-center" resizeMode="contain" />
         <SignInForm />
       </View>
     </ScrollView>
-  )
-}
+  );
+};
 
-export default Login
-
+export default SignIn;

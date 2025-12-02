@@ -17,10 +17,10 @@ const MainLayout = () => {
     
     if(isAuthenticated && !inApp){
       // if authenticated
-      router.replace('/home' as any);
+      router.replace('/(dashboard)/home' as any);
     }else if (isAuthenticated === false){
       // if not authenticated
-      router.replace('login' as any);
+      router.replace('./(auth)/login' as any);
     }
   }, [isAuthenticated]);
 

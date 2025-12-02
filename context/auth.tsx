@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     setTimeout(() => {
         setIsAuthenticated(false);
-    }, 3000);
+    }, 4000);
   }, [])
 
   const login = async (email, password) => {

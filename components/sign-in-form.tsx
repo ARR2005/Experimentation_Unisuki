@@ -9,11 +9,12 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Text } from '@/components/ui/text';
-import { Link } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
 import * as React from 'react';
 import { Pressable, type TextInput, View } from 'react-native';
 
 export function SignInForm() {
+  const router = useRouter();
   const passwordInputRef = React.useRef<TextInput>(null);
 
   function onEmailSubmitEditing() {
@@ -21,11 +22,11 @@ export function SignInForm() {
   }
 
   function onSubmit() {
-    // TODO: Submit form and navigate to protected screen if successful
+    router.push('/(dashboard)/home');
   }
 
   return (
-    <View className='absolute top-0 w-full'>
+    <View className='absolute top-3 w-full'>
       <Card className="border-border/0 sm:border-border shadow-none sm:shadow-sm sm:shadow-black/5">
         <CardHeader>
           <CardTitle className="text-center text-xl sm:text-left">Sign in to your app</CardTitle>
@@ -69,8 +70,8 @@ export function SignInForm() {
                 onSubmitEditing={onSubmit}
               />
             </View>
-            <Button className="w-full" onPress={onSubmit}>
-              <Link href='/(dashboard)/home' className='text-white'>Continue</Link>
+            <Button className="w-full bg-green-500 " onPress={onSubmit}>
+              <Text>Continue</Text>
             </Button>
           </View>
           <Text className="text-center text-sm">

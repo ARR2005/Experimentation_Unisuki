@@ -1,264 +1,254 @@
 {
   "items": {
     "item_001": {
-      "title": "Vintage Denim Jacket",
-      "image_uri": "public/1.png",
-      "description": "Classic blue denim jacket, lightly distressed, perfect for a casual look. Size M. Image file: public/1.png",
-      "support_images": [
-        "https://storage.googleapis.com/your-storage-bucket/images/denim_jacket_back.jpg",
-        "https://storage.googleapis.com/your-storage-bucket/images/denim_jacket_detail.jpg"
-      ],
-      "price": 45.99,
-      "type": "clothes",
-      "size": "M"
-    },
-    "item_002": {
-      "title": "Introduction to Algorithms, 4th Ed.",
-      "image_uri": "public/10.png",
-      "description": "Standard textbook for algorithms and data structures. Excellent condition. Image file: public/10.png",
+      "title": "Ballpen Deli",
+      "image_uri": "Ballpen_deli.jpg",
+      "description": "This is a Ballpen Deli.",
       "support_images": [],
-      "price": 60.00,
-      "type": "books",
-      "size": null
-    },
-    "item_003": {
-      "title": "Wireless Noise Cancelling Headphones",
-      "image_uri": "public/2.png",
-      "description": "Over-ear headphones with ANC and 30-hour battery life. Includes original box. Image file: public/2.png",
-      "support_images": [
-        "https://storage.googleapis.com/your-storage-bucket/images/headphones_case.jpg"
-      ],
-      "price": 129.50,
-      "type": "gadgets",
-      "size": null
-    },
-    "item_004": {
-      "title": "Men's Running Shoes - Neon Yellow",
-      "image_uri": "public/3.png",
-      "description": "Lightweight, breathable running shoes. Used for one season. Size L (approx. US 10). Image file: public/3.png",
-      "support_images": [
-        "https://storage.googleapis.com/your-storage-bucket/images/running_shoes_sole.jpg",
-        "https://storage.googleapis.com/your-storage-bucket/images/running_shoes_side.jpg"
-      ],
-      "price": 35.00,
-      "type": "shoes",
+      "price": 3888,
+      "type": "miscellaneous",
       "size": "L"
     },
-    "item_005": {
-      "title": "Women's Little Black Dress",
-      "image_uri": "public/4.png",
-      "description": "Elegant knee-length black dress. Perfect for cocktail parties. Image file: public/4.png",
-      "support_images": [
-        "https://storage.googleapis.com/your-storage-bucket/images/lbd_model.jpg"
-      ],
-      "price": 55.00,
+    "item_002": {
+      "title": "Blazer",
+      "image_uri": "Blazer.jpg",
+      "description": "This is a Blazer.",
+      "support_images": [],
+      "price": 2899,
+      "type": "clothes",
+      "size": "L"
+    },
+    "item_003": {
+      "title": "Blazer3",
+      "image_uri": "Blazer3.jpg",
+      "description": "This is a Blazer.",
+      "support_images": [],
+      "price": 4249,
       "type": "clothes",
       "size": "S"
     },
-    "item_006": {
-      "title": "The Hitchhiker's Guide to the Galaxy",
-      "image_uri": "public/5.png",
-      "description": "Paperback copy of the classic sci-fi novel. Slightly worn cover. Image file: public/5.png",
+    "item_004": {
+      "title": "Blazerjacket",
+      "image_uri": "BlazerJacket.jpg",
+      "description": "This is a Blazer jacket.",
       "support_images": [],
-      "price": 5.50,
-      "type": "books",
-      "size": null
+      "price": 1283,
+      "type": "clothes",
+      "size": "M"
+    },
+    "item_005": {
+      "title": "College Pe",
+      "image_uri": "College_Pe.png",
+      "description": "This is a College PE Shirt.",
+      "support_images": [],
+      "price": 2420,
+      "type": "clothes",
+      "size": "L"
+    },
+    "item_006": {
+      "title": "Deftac Ucshirt",
+      "image_uri": "deftac_ucshirt.png",
+      "description": "This is a Deftac Ucshirt.",
+      "support_images": [],
+      "price": 2688,
+      "type": "clothes",
+      "size": "L"
     },
     "item_007": {
-      "title": "Portable Bluetooth Speaker",
-      "image_uri": "public/6.png",
-      "description": "Waterproof speaker with great bass. Battery lasts up to 10 hours. Image file: public/6.png",
-      "support_images": [
-        "https://storage.googleapis.com/your-storage-bucket/images/speaker_box.jpg",
-        "https://storage.googleapis.com/your-storage-bucket/images/speaker_size.jpg",
-        "https://storage.googleapis.com/your-storage-bucket/images/speaker_ports.jpg"
-      ],
-      "price": 49.99,
-      "type": "gadgets",
-      "size": null
-    },
-    "item_008": {
-      "title": "High-Top Canvas Sneakers",
-      "image_uri": "public/7.png",
-      "description": "White canvas high-top shoes. Brand new condition. Image file: public/7.png",
+      "title": "Download (1)",
+      "image_uri": "download (1).jpg",
+      "description": "This is a Download (1).",
       "support_images": [],
-      "price": 40.00,
-      "type": "shoes",
-      "size": "XXL"
-    },
-    "item_009": {
-      "title": "Cozy Knit Sweater",
-      "image_uri": "public/8.png",
-      "description": "Oversized, thick cable-knit sweater, perfect for winter. Image file: public/8.png",
-      "support_images": [],
-      "price": 30.00,
-      "type": "clothes",
-      "size": "XXL"
+      "price": 1396,
+      "type": "miscellaneous",
+      "size": "S"
     },
     "item_010": {
-      "title": "Data Science Handbook",
-      "image_uri": "public/9.png",
-      "description": "Comprehensive guide to machine learning and statistical modeling. Image file: public/9.png",
+      "title": "Elements Of Finance Book",
+      "image_uri": "Elements of finance Book.png",
+      "description": "This is a Elements Of Finance Book.",
       "support_images": [],
-      "price": 75.00,
+      "price": 3169,
       "type": "books",
-      "size": null
+      "size": "S"
     },
     "item_011": {
-      "title": "Smart Fitness Watch",
-      "image_uri": "580996031_1388862962605084_4748162696121341656_n.jpg",
-      "description": "Tracks steps, heart rate, and sleep. Includes charger. Image file: 580996031_1388862962605084_4748162696121341656_n.jpg",
-      "support_images": [
-        "https://storage.googleapis.com/your-storage-bucket/images/watch_screen.jpg"
-      ],
-      "price": 85.00,
+      "title": "Fx-82es Calculator",
+      "image_uri": "fx-82es_calculator.png",
+      "description": "This is a Fx-82es Calculator.",
+      "support_images": [],
+      "price": 3816,
       "type": "gadgets",
-      "size": null
+      "size": "M"
     },
     "item_012": {
-      "title": "Leather Dress Boots",
-      "image_uri": "583800591_25313974108211934_7276409588752668376_n.webp",
-      "description": "High-quality leather boots, barely worn. Fits size XS (approx. US 7). Image file: 583800591_25313974108211934_7276409588752668376_n.webp",
-      "support_images": [
-        "https://storage.googleapis.com/your-storage-bucket/images/dress_boots_side.jpg"
-      ],
-      "price": 150.00,
-      "type": "shoes",
-      "size": "XS"
+      "title": "Headset Wireless",
+      "image_uri": "Headset_wireless.jpg",
+      "description": "This is a Headset Wireless.",
+      "support_images": [],
+      "price": 1083,
+      "type": "gadgets",
+      "size": "XL"
     },
     "item_013": {
-      "title": "Striped T-Shirt",
-      "image_uri": "584460452_122190123446553923_9160252425489159450_n.jpg",
-      "description": "Cotton blend, navy and white stripes. Comfortable fit. Image file: 584460452_122190123446553923_9160252425489159450_n.jpg",
+      "title": "Heartbet Checker",
+      "image_uri": "Heartbet_Checker.png",
+      "description": "This is a Heartbet Checker.",
       "support_images": [],
-      "price": 12.00,
-      "type": "clothes",
-      "size": "XXS"
+      "price": 4183,
+      "type": "miscellaneous",
+      "size": "S"
     },
     "item_014": {
-      "title": "Used College Calculus Textbook",
-      "image_uri": "584674248_25313974458211899_797891218850702209_n.webp",
-      "description": "Used for Math 101. Some highlighting on the first few chapters. Image file: 584674248_25313974458211899_797891218850702209_n.webp",
+      "title": "Iphone 12",
+      "image_uri": "Iphone 12.jpg",
+      "description": "This is a Iphone 12.",
       "support_images": [],
-      "price": 25.00,
-      "type": "books",
-      "size": null
+      "price": 1968,
+      "type": "gadgets",
+      "size": "L"
     },
     "item_015": {
-      "title": "Ergonomic Mechanical Keyboard",
-      "image_uri": "584785180_122215253666100233_1816770872144955023_n.jpg",
-      "description": "Split ergonomic design, satisfying tactile click. USB-C connection. Image file: 584785180_122215253666100233_1816770872144955023_n.jpg",
-      "support_images": [
-        "https://storage.googleapis.com/your-storage-bucket/images/keyboard_detail.jpg",
-        "https://storage.googleapis.com/your-storage-bucket/images/keyboard_back.jpg"
-      ],
-      "price": 99.99,
-      "type": "gadgets",
-      "size": null
-    },
-    "item_016": {
-      "title": "Hiking Boots - Waterproof",
-      "image_uri": "585349204_1527198915210325_5500161613672740274_n.jpg",
-      "description": "Durable, waterproof hiking boots with excellent ankle support. Size XL (approx. US 12). Image file: 585349204_1527198915210325_5500161613672740274_n.jpg",
-      "support_images": [
-        "https://storage.googleapis.com/your-storage-bucket/images/hiking_boots_tread.jpg"
-      ],
-      "price": 80.00,
+      "title": "Leather Shoe Used",
+      "image_uri": "leather_shoe_used.png",
+      "description": "This is a Leather Shoe Used.",
+      "support_images": [],
+      "price": 3139,
       "type": "shoes",
       "size": "XL"
     },
-    "item_017": {
-      "title": "Business Blazer",
-      "image_uri": "587630053_1339833253924419_2590473242897672863_n.jpg",
-      "description": "Structured grey blazer, single-button closure. Professionally cleaned. Image file: 587630053_1339833253924419_2590473242897672863_n.jpg",
+    "item_016": {
+      "title": "Miniskirt",
+      "image_uri": "Miniskirt.jpg",
+      "description": "This is a Miniskirt.",
       "support_images": [],
-      "price": 70.00,
+      "price": 2727,
+      "type": "clothes",
+      "size": "M"
+    },
+    "item_017": {
+      "title": "Miniskirt2",
+      "image_uri": "Miniskirt2.jpg",
+      "description": "This is a Miniskirt2.",
+      "support_images": [],
+      "price": 2690,
       "type": "clothes",
       "size": "XL"
     },
     "item_018": {
-      "title": "Women's Lightweight Hoodie",
-      "image_uri": "587683435_1339833273924417_8938361591948069378_n.jpg",
-      "description": "Soft pink cotton hoodie. Perfect for spring/fall. Image file: 587683435_1339833273924417_8938361591948069378_n.jpg",
+      "title": "Nstp Shirt",
+      "image_uri": "NSTP_Shirt.webp",
+      "description": "This is a Nstp Shirt.",
       "support_images": [],
-      "price": 25.00,
+      "price": 1421,
       "type": "clothes",
-      "size": "XS"
+      "size": "S"
     },
     "item_019": {
-      "title": "Organic Chemistry Textbook, 8th Ed.",
-      "image_uri": "588110580_1339833167257761_4329284501459614886_n.jpg",
-      "description": "Required text for sophomore organic chemistry. Minor wear and tear. Image file: 588110580_1339833167257761_4329284501459614886_n.jpg",
-      "support_images": [
-        "https://storage.googleapis.com/your-storage-bucket/images/organic_chem_binding.jpg"
-      ],
-      "price": 40.00,
-      "type": "books",
-      "size": null
+      "title": "Nstp Shirts1",
+      "image_uri": "Nstp_Shirts1.webp",
+      "description": "This is a Nstp Shirts1.",
+      "support_images": [],
+      "price": 3524,
+      "type": "clothes",
+      "size": "S"
     },
     "item_020": {
-      "title": "Portable Drawing Tablet",
-      "image_uri": "588520770_1339833307257747_9190572431139485094_n.jpg",
-      "description": "8-inch screen, pressure-sensitive stylus included. Great for digital artists on the go. Image file: 588520770_1339833307257747_9190572431139485094_n.jpg",
-      "support_images": [
-        "https://storage.googleapis.com/your-storage-bucket/images/drawing_tablet_stylus.jpg"
-      ],
-      "price": 199.00,
-      "type": "gadgets",
-      "size": null
-    },
-    "item_021": {
-      "title": "Soccer Cleats",
-      "image_uri": "588997828_1339833337257744_6902194469641380985_n.jpg",
-      "description": "Used for one soccer season. Good grip on natural grass. Image file: 588997828_1339833337257744_6902194469641380985_n.jpg",
+      "title": "Nursing Garment",
+      "image_uri": "Nursing_garment.png",
+      "description": "This is a Nursing Garment.",
       "support_images": [],
-      "price": 45.00,
-      "type": "shoes",
-      "size": "M"
-    },
-    "item_022": {
-      "title": "Silk Scarf",
-      "image_uri": "https://storage.googleapis.com/your-storage-bucket/images/silk_scarf.jpg",
-      "description": "100% pure silk scarf with geometric pattern. Dry-clean only.",
-      "support_images": [
-        "https://storage.googleapis.com/your-storage-bucket/images/silk_scarf_detail.jpg"
-      ],
-      "price": 18.50,
+      "price": 2045,
       "type": "clothes",
       "size": "L"
     },
-    "item_023": {
-      "title": "A Brief History of Time",
-      "image_uri": "https://storage.googleapis.com/your-storage-bucket/images/brief_history.jpg",
-      "description": "Hardcover edition, excellent gift quality.",
+    "item_021": {
+      "title": "Nursing Pants ",
+      "image_uri": "nursing_pants .png",
+      "description": "This is a Nursing Pants .",
       "support_images": [],
-      "price": 15.00,
-      "type": "books",
-      "size": null
+      "price": 4356,
+      "type": "clothes",
+      "size": "M"
+    },
+    "item_022": {
+      "title": "Pe Pants",
+      "image_uri": "Pe_pants.jpg",
+      "description": "This is a Pe Pants.",
+      "support_images": [],
+      "price": 1058,
+      "type": "clothes",
+      "size": "XL"
+    },
+    "item_023": {
+      "title": "Uc Jacket",
+      "image_uri": "Uc_Jacket.png",
+      "description": "This is a Uc Jacket.",
+      "support_images": [],
+      "price": 2874,
+      "type": "clothes",
+      "size": "XL"
+    },
+    "item_024": {
+      "title": "White Nursing Shoe Used",
+      "image_uri": "white_nursing_shoe_used.png",
+      "description": "This is a White Nursing Shoe Used.",
+      "support_images": [],
+      "price": 4534,
+      "type": "shoes",
+      "size": "M"
     }
   },
-  "transaction_fees": [1, 2, 3, 4, 5],
+  "transaction_fees": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
   "transaction_fee": 5,
   "coupons": {
     "PROMO5": 5,
     "SAVE10": 10
   },
   "chats": {
-    "chat_user_123456789_with_seller": {
-      "username": "User_123456789",
-      "overall_conversation": [
-        {"sender": "User_123456789", "message": "Is the jacket still available?", "timestamp": "2025-11-18T10:00:00Z"},
-        {"sender": "Seller_987654321", "message": "Yes, it is!", "timestamp": "2025-11-18T10:05:00Z"}
-      ],
-      "recent_chat": "Yes, it is!"
+    "chat_123456789_987654321": {
+      "buyer_username": "Alex Johnson",
+      "seller_username": "Maria Rodriguez",
+      "recent_chat": "Yes, it is!",
+      "overall_conversation": {
+        "buyer_messages": [
+          {
+            "message": "Is the jacket still available?",
+            "timestamp": "2025-11-18T10:00:00Z"
+          }
+        ],
+        "seller_messages": [
+          {
+            "message": "Yes, it is!",
+            "timestamp": "2025-11-18T10:05:00Z"
+          }
+        ]
+      }
     },
-    "chat_user_555666777_with_buyer": {
-      "username": "Buyer_555666777",
-      "overall_conversation": [
-        {"sender": "Buyer_555666777", "message": "I'm interested in the headphones, can we meet?", "timestamp": "2025-11-20T14:00:00Z"},
-        {"sender": "Seller_987654321", "message": "Sure — when are you available?", "timestamp": "2025-11-20T14:05:00Z"}
-      ],
-      "recent_chat": "Sure — when are you available?"
+    "chat_555666777_987654321": {
+      "buyer_username": "Jorge Bennett",
+      "seller_username": "Maria Rodriguez",
+      "recent_chat": "Sure — when are you available?",
+      "overall_conversation": {
+        "buyer_messages": [
+          {
+            "message": "I'm interested in the headphones, can we meet?",
+            "timestamp": "2025-11-20T14:00:00Z"
+          }
+        ],
+        "seller_messages": [
+          {
+            "message": "Sure — when are you available?",
+            "timestamp": "2025-11-20T14:05:00Z"
+          }
+        ]
+      }
     }
   },
   "notifications": {
@@ -266,6 +256,7 @@
       "user_id": 987654321,
       "type": "Post created",
       "message": "Your item 'Junior highschool Pe pants' has been listed.",
+      "description": "Your listing for 'Junior highschool Pe pants' is now live. Buyers can see it.",
       "timestamp": "2025-11-19T09:00:00Z",
       "read": false
     },
@@ -273,6 +264,7 @@
       "user_id": 987654321,
       "type": "Post created",
       "message": "Your item 'Senior highschool Pe shirt' has been listed'.",
+      "description": "Your listing for 'Senior highschool Pe shirt' is now live. Buyers can see it.",
       "timestamp": "2025-11-19T09:05:00Z",
       "read": false
     },
@@ -280,6 +272,7 @@
       "user_id": 987654321,
       "type": "purchase",
       "message": "User_555666777 bought 'Wireless Noise Cancelling Headphones'.",
+      "description": "Congratulations! You've sold your 'Wireless Noise Cancelling Headphones'. Please arrange for delivery or pickup.",
       "timestamp": "2025-11-20T16:30:00Z",
       "read": false
     },
@@ -287,6 +280,7 @@
       "user_id": 123456789,
       "type": "post created",
       "message": "Your new listing 'Portable Drawing Tablet' is now live.",
+      "description": "Your listing for 'Portable Drawing Tablet' is now live. Buyers can see it.",
       "timestamp": "2025-11-20T17:00:00Z",
       "read": false
     }
@@ -295,14 +289,12 @@
     "user_123456789": {
       "name": "Alex Johnson",
       "id": 123456789,
-      "password_hash": "hashed_password_string_1",
       "email": "alex.j@example.com",
       "address": "123 Market St"
     },
     "user_987654321": {
       "name": "Maria Rodriguez",
       "id": 987654321,
-      "password_hash": "hashed_password_string_2",
       "email": "maria.r@example.com",
       "phone": "+15551234"
     },
@@ -312,6 +304,19 @@
       "email": "jorge.b@example.com",
       "phone": "+15559876",
       "small_bio": "Student selling gadgets & books"
+    },
+    "user_111222333": {
+      "name": "Samantha Lee",
+      "id": 111222333,
+      "email": "samantha.l@example.com",
+      "phone": "+15554321",
+      "small_bio": "Fashion enthusiast and bookworm."
+    },
+    "user_444555666": {
+      "name": "David Chen",
+      "id": 444555666,
+      "email": "david.c@example.com",
+      "address": "456 Oak Ave"
     }
   }
 }

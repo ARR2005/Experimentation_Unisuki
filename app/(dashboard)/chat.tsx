@@ -1,47 +1,53 @@
-import { Ionicons } from '@expo/vector-icons'
-import { useRouter } from 'expo-router'
-import React from 'react'
-import { ScrollView, Text, TouchableOpacity, View } from 'react-native'
+import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
+import React from 'react';
+import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
+import Layout from '../../components/Layout';
 
-const DB = require('../../DB.json')
-const chats = Object.entries(DB.chats || {}) as [string, any][]
+// Assuming a mock current user. In a real app, this would come from your auth context.
+const currentUsername = "Alex Johnson"; 
 
-export default function Chat() {
-  const router = useRouter()
+const DB = require('../../DB.json');
+const chats = Object.entries(DB.chats || {}).map(([key, v]: any) => ({ id: key, ...v }));
+
+const ChatListScreen = () => {
+  const router = useRouter();
+
+  const renderItem = ({ item }: { item: any }) => {
+    // Determine the other user in the chat
+    const otherUser = item.buyer_username === currentUsername ? item.seller_username : item.buyer_username;
+
+    return (
+      <TouchableOpacity
+        className="flex-row items-center p-4 border-b border-gray-100"
+        onPress={() => router.push({ pathname: '/(pill)/conversation', params: { chatId: item.id } } as any)}
+      >
+        <Image
+          source={{ uri: `https://i.pravatar.cc/150?u=${otherUser}` }} // Using a placeholder avatar
+          className="w-12 h-12 rounded-full mr-3"
+        />
+        <View className="flex-1">
+          <Text className="text-base font-semibold text-gray-900">{otherUser}</Text>
+          <Text className="text-sm text-gray-600 mt-0.5" numberOfLines={1}>{item.recent_chat}</Text>
+        </View>
+        <Ionicons name="chevron-forward" size={20} color="#9CA3AF" />
+      </TouchableOpacity>
+    );
+  }
 
   return (
-    <ScrollView className="flex-1 bg-white" contentContainerStyle={{ paddingBottom: 96 }}>
-      <View className="px-4 pt-6">
-        <Text className="text-2xl font-bold mb-4">UniSuki</Text>
-
-        {/* Search */}
-        <View className="flex-row items-center bg-gray-100 rounded-lg px-3 py-2 mb-4">
-          <Ionicons name="search-outline" size={18} color="#9CA3AF" style={{ marginRight: 12 }} />
-          <View className="flex-1">
-            <View className="h-3 bg-gray-200 rounded w-3/4" />
-          </View>
-        </View>
-
-        {/* Chat list */}
-        <View>
-          {chats.map(([key, it]) => (
-            <TouchableOpacity
-              key={key}
-              className="flex-row items-center py-3 border-b border-gray-100"
-              onPress={() => router.push({ pathname: '/(dashboard)/chat/[id]', params: { id: key } } as any)}
-            >
-              <View className="w-12 h-12 rounded-full bg-gray-100 items-center justify-center mr-3">
-                <Ionicons name="image-outline" size={20} color="#9CA3AF" />
-              </View>
-
-              <View className="flex-1">
-                <Text className="font-medium">{it.username}</Text>
-                <Text className="text-sm text-gray-500 mt-1">{it.recent_chat}</Text>
-              </View>
-            </TouchableOpacity>
-          ))}
-        </View>
+    <Layout>
+      <View className="flex-1 bg-white">
+        <Text className="text-2xl font-bold px-4 py-2.5 text-black">Chats</Text>
+        <FlatList
+          data={chats}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+          contentContainerStyle={{ paddingBottom: 96 }}
+        />
       </View>
-    </ScrollView>
-  )
-}
+    </Layout>
+  );
+};
+
+export default ChatListScreen;

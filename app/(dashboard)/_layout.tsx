@@ -1,15 +1,15 @@
 import { Ionicons } from '@expo/vector-icons';
 import { Tabs, useRouter } from 'expo-router';
 import React, { useState } from 'react';
-import { Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 
 function CustomTabBar({ state, descriptors, navigation }: any) {
   const [menuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
 
   return (
-    <View style={styles.tabBarContainer} pointerEvents="box-none">
-      <View style={styles.tabBar}>
+    <View className="absolute bottom-0 w-full items-center pointer-events-box-none">
+      <View className="flex-row bg-white h-[86px] border-t-2 border-green-600 rounded-t-2xl px-5 items-center justify-between w-full shadow-lg">
         {state.routes.map((route: any, index: number) => {
           const { options } = descriptors[route.key];
           const label = options.title ?? route.name;
@@ -30,9 +30,7 @@ function CustomTabBar({ state, descriptors, navigation }: any) {
           };
 
           if (isCenter) {
-            return (
-              <View key={route.key} style={styles.centerPlaceholder} />
-            );
+            return <View key={route.key} className="w-[72px]" />;
           }
 
           const icons: Record<string, any> = {
@@ -44,56 +42,55 @@ function CustomTabBar({ state, descriptors, navigation }: any) {
 
           return (
             <TouchableOpacity
-              onPress={onPress}
-              style={styles.tabButton}
               key={route.key}
+              onPress={onPress}
+              className="flex-1 items-center"
             >
-              <Ionicons name={icons[route.name] ?? 'ellipse'} size={20}  />
+              <Ionicons name={icons[route.name] ?? 'ellipse'} size={25}  />
             </TouchableOpacity>
           );
         })}
       </View>
-
       {/* Floater */}
       {menuOpen && (
-        <View style={styles.menuWrap} pointerEvents="box-none">
+        <View className="absolute top-[-80px] z-10 w-full flex-row items-center self-center justify-center pointer-events-box-none">
           <TouchableOpacity
-            style={styles.pill}
+            className="flex-row items-center bg-gray-100 px-3 py-2 rounded-2xl mx-0.5 border border-gray-200"
             onPress={() => {
               setMenuOpen(false);
               router.push('/(pill)/check');
             }}
           >
-            <Ionicons name="checkmark" size={18} color="#111827" />
-            <View className='w-6'/>
+            <Ionicons name="checkmark" size={18} color="000" />
+            <View className="w-4" />
             <View>
-              <Text style={styles.pillText}>Check</Text>
+              <Text className="text-gray-900 text-[13px]">Check</Text>
             </View>
           </TouchableOpacity>
 
           <TouchableOpacity
-            style={styles.pill}
+            className="flex-row items-center bg-gray-100 px-3 py-2 rounded-2xl mx-0.5 border border-gray-200"
             onPress={() => {
               setMenuOpen(false);
               router.push('/(pill)/post');
             }}
           >
-            <Ionicons name="create-outline" size={18} color="#111827" />
-            <View className='w-6'/>
+            <Ionicons name="create-outline" size={18} color="#000" />
+            <View className="w-4" />
             <View>
-              <Text style={styles.pillText}>Post</Text>
+              <Text className="text-gray-900 text-[13px]">Post</Text>
             </View>
           </TouchableOpacity>
         </View>
       )}
 
-        {/* center button */}
-      <View style={styles.centerButtonWrap} pointerEvents="box-none">
+      {/* center button */}
+      <View className="absolute top-[-40px] w-full items-center" pointerEvents="box-none">
         <TouchableOpacity
           onPress={() => setMenuOpen((s) => !s)}
-          style={styles.centerButton}
+          className="w-20 h-20 rounded-full items-center justify-center border-0 border-gray-200 shadow-lg bg-green-600"
         >
-          <Ionicons name="cart" size={25} color="#111827" />
+          <Ionicons name="cart-outline" size={40} color="#000" />
         </TouchableOpacity>
       </View>
     </View>
@@ -117,78 +114,3 @@ const DashboardLayout = () => {
 }
 
 export default DashboardLayout
-
-const styles = StyleSheet.create({
-  tabBarContainer: {
-    position: 'absolute',
-    left: 16,
-    right: 16,
-    bottom: Platform.OS === 'android' ? 12 : 24,
-    alignItems: 'center',
-    pointerEvents: 'box-none',
-  },
-  tabBar: {
-    flexDirection: 'row',
-    backgroundColor: '#F3F4F6',
-    height: 64,
-    borderRadius: 12,
-    paddingHorizontal: 18,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    width: '100%',
-    shadowColor: '#000',
-    shadowOpacity: 0.06,
-    shadowOffset: { width: 0, height: 6 },
-    shadowRadius: 12,
-    elevation: 6,
-  },
-  tabButton: {
-    flex: 1,
-    alignItems: 'center',
-  },
-  centerPlaceholder: { width: 72 },
-  centerButtonWrap: {
-    position: 'absolute',
-    top: -28,
-    width: '100%',
-    alignItems: 'center',
-  },
-  centerButton: {
-    width: 56,
-    height: 56,
-    borderRadius: 28,
-    backgroundColor: '#FFFFFF',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: '#E5E7EB',
-    shadowColor: '#000',
-    shadowOpacity: 0.08,
-    shadowOffset: { width: 0, height: 6 },
-    shadowRadius: 12,
-    elevation: 8,
-  },
-  menuWrap: {
-    position: 'absolute',
-    top: -88,
-    width: 220,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  pill: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#F3F4F6',
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    borderRadius: 18,
-    marginHorizontal: 2,
-    borderWidth: 1,
-    borderColor: '#E5E7EB',
-  },
-  pillText: {
-    color: '#111827',
-    fontSize: 13,
-  },
-})

@@ -1,7 +1,7 @@
 import { CameraType, CameraView, useCameraPermissions } from 'expo-camera'
 import { useRouter } from 'expo-router'
 import React, { useRef, useState } from 'react'
-import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native'
 
 export default function PostCamera() {
   const [permission, requestPermission] = useCameraPermissions()
@@ -14,9 +14,9 @@ export default function PostCamera() {
 
   if (!permission.granted) {
     return (
-      <View style={styles.center}>
+      <View className="flex-1 justify-center items-center">
         <Text style={{ marginBottom: 12 }}>We need camera permission</Text>
-        <TouchableOpacity onPress={requestPermission} style={styles.grantButton}>
+        <TouchableOpacity onPress={requestPermission} className="p-2.5 bg-blue-600 rounded-lg">
           <Text style={{ color: 'white' }}>Grant</Text>
         </TouchableOpacity>
       </View>
@@ -45,43 +45,22 @@ export default function PostCamera() {
   return (
     <View style={{ flex: 1, backgroundColor: 'black' }}>
       <CameraView ref={cameraRef} style={{ flex: 1 }} facing={facing}>
-        <View style={styles.overlay} pointerEvents="none">
-          <View style={styles.topSpace} />
-          <View style={styles.centerRow}>
-            <View style={styles.sideSpace} />
-            <View style={styles.boundingBox} />
-            <View style={styles.sideSpace} />
+        <View className="flex-1 justify-center mb-56" pointerEvents="none">
+          <View className="flex-1" />
+          <View className="flex-row items-center">
+            <View className="flex-1" />
+            <View className="w-[340px] h-[560px] border-2 border-white/90" />
+            <View className="flex-1" />
           </View>
-          <View style={styles.bottomSpace} />
+          <View className="flex-2" />
         </View>
       </CameraView>
 
-      <View style={styles.controls}>
-        <TouchableOpacity onPress={flip} style={styles.controlButton}>
-          <Text style={{ color: 'white' }}>Flip</Text>
+      <View className="absolute bottom-10 left-0 right-0 flex-row justify-center items-center">
+        <TouchableOpacity onPress={takePicture} className="w-[72px] h-[72px] rounded-full bg-white/10 items-center justify-center" disabled={taking}>
+          {taking ? <ActivityIndicator color="#fff" /> : <View className="w-[52px] h-[52px] rounded-full bg-white" />}
         </TouchableOpacity>
-
-        <TouchableOpacity onPress={takePicture} style={styles.captureButton} disabled={taking}>
-          {taking ? <ActivityIndicator color="#fff" /> : <View style={styles.innerCircle} />}
-        </TouchableOpacity>
-
-        <View style={{ width: 64 }} />
       </View>
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  grantButton: { padding: 10, backgroundColor: '#2563eb', borderRadius: 8 },
-  overlay: { flex: 1, justifyContent: 'center' },
-  topSpace: { flex: 1 },
-  bottomSpace: { flex: 2 },
-  centerRow: { flexDirection: 'row', alignItems: 'center' },
-  sideSpace: { flex: 1 },
-  boundingBox: { width: 260, height: 360, borderWidth: 2, borderColor: 'rgba(255,255,255,0.9)', borderRadius: 12 },
-  controls: { position: 'absolute', bottom: 40, left: 0, right: 0, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' },
-  controlButton: { padding: 12, backgroundColor: 'rgba(0,0,0,0.4)', borderRadius: 8 },
-  captureButton: { width: 72, height: 72, borderRadius: 36, backgroundColor: 'rgba(255,255,255,0.12)', alignItems: 'center', justifyContent: 'center' },
-  innerCircle: { width: 52, height: 52, borderRadius: 26, backgroundColor: 'white' },
-})

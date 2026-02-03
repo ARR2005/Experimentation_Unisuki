@@ -1,15 +1,22 @@
 import { Ionicons } from '@expo/vector-icons';
 import { Tabs, useRouter } from 'expo-router';
 import React, { useState } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View, useColorScheme } from 'react-native';
 
 function CustomTabBar({ state, descriptors, navigation }: any) {
   const [menuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
+  const colorScheme = useColorScheme();
+  const isDark = colorScheme === 'dark';
+  const bgColor = isDark ? 'bg-gray-900' : 'bg-white';
+  const borderColor = isDark ? 'border-green-500' : 'border-green-600';
+  const textColor = isDark ? 'text-white' : 'text-gray-900';
+  const floatBg = isDark ? 'bg-gray-800' : 'bg-gray-100';
+  const floatBorder = isDark ? 'border-gray-700' : 'border-gray-200';
 
   return (
-    <View className="absolute bottom-0 w-full items-center pointer-events-box-none">
-      <View className="flex-row bg-white h-[86px] border-t-2 border-green-600 rounded-t-2xl px-5 items-center justify-between w-full shadow-lg">
+    <View className="absolute bottom-0 left-0 right-0 items-center" pointerEvents="box-none">
+      <View className={`flex-row ${bgColor} h-[86px] border-t-2 ${borderColor} rounded-t-2xl px-5 items-center justify-between w-full shadow-lg`}>
         {state.routes.map((route: any, index: number) => {
           const { options } = descriptors[route.key];
           const label = options.title ?? route.name;
@@ -46,39 +53,39 @@ function CustomTabBar({ state, descriptors, navigation }: any) {
               onPress={onPress}
               className="flex-1 items-center"
             >
-              <Ionicons name={icons[route.name] ?? 'ellipse'} size={25}  />
+              <Ionicons name={icons[route.name] ?? 'ellipse'} size={25} color={isDark ? '#fff' : '#000'} />
             </TouchableOpacity>
           );
         })}
       </View>
       {/* Floater */}
       {menuOpen && (
-        <View className="absolute top-[-80px] z-10 w-full flex-row items-center self-center justify-center pointer-events-box-none">
+        <View className="absolute top-[-80px] z-10 w-full flex-row items-center self-center justify-center" pointerEvents="box-none">
           <TouchableOpacity
-            className="flex-row items-center bg-gray-100 px-3 py-2 rounded-2xl mx-0.5 border border-gray-200"
+            className={`flex-row items-center ${floatBg} px-3 py-2 rounded-2xl mx-0.5 border ${floatBorder}`}
             onPress={() => {
               setMenuOpen(false);
               router.push('/(pill)/check');
             }}
           >
-            <Ionicons name="checkmark" size={18} color="000" />
+            <Ionicons name="checkmark" size={18} color={isDark ? '#fff' : '#000'} />
             <View className="w-4" />
             <View>
-              <Text className="text-gray-900 text-[13px]">Check</Text>
+              <Text className={`${textColor} text-[13px]`}>Check</Text>
             </View>
           </TouchableOpacity>
 
           <TouchableOpacity
-            className="flex-row items-center bg-gray-100 px-3 py-2 rounded-2xl mx-0.5 border border-gray-200"
+            className={`flex-row items-center ${floatBg} px-3 py-2 rounded-2xl mx-0.5 border ${floatBorder}`}
             onPress={() => {
               setMenuOpen(false);
               router.push('/(pill)/post');
             }}
           >
-            <Ionicons name="create-outline" size={18} color="#000" />
+            <Ionicons name="create-outline" size={18} color={isDark ? '#fff' : '#000'} />
             <View className="w-4" />
             <View>
-              <Text className="text-gray-900 text-[13px]">Post</Text>
+              <Text className={`${textColor} text-[13px]`}>Post</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -88,9 +95,9 @@ function CustomTabBar({ state, descriptors, navigation }: any) {
       <View className="absolute top-[-40px] w-full items-center" pointerEvents="box-none">
         <TouchableOpacity
           onPress={() => setMenuOpen((s) => !s)}
-          className="w-20 h-20 rounded-full items-center justify-center border-0 border-gray-200 shadow-lg bg-green-600"
+          className={`w-20 h-20 rounded-full items-center justify-center border-0 border-gray-200 shadow-lg ${isDark ? 'bg-green-500' : 'bg-green-600'}`}
         >
-          <Ionicons name="cart-outline" size={40} color="#000" />
+          <Ionicons name="cart-outline" size={40} color={isDark ? '#000' : '#000'} />
         </TouchableOpacity>
       </View>
     </View>

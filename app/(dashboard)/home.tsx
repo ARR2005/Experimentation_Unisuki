@@ -2,14 +2,15 @@ import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import React, { useRef, useState } from 'react';
 import {
-  Dimensions,
-  Image,
-  ImageBackground,
-  Modal,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
+    Dimensions,
+    Image,
+    ImageBackground,
+    Modal,
+    ScrollView,
+    Text,
+    TouchableOpacity,
+    View,
+    useColorScheme,
 } from 'react-native';
 import background from "../../assets/images/bg_white.png";
 import Layout from '../../components/Layout';
@@ -26,6 +27,8 @@ const Home = () => {
     const [selectedItem, setSelectedItem] = useState<any | null>(null)
     const [modalVisible, setModalVisible] = useState(false)
     const router = useRouter();
+    const colorScheme = useColorScheme();
+    const isDark = colorScheme === 'dark';
 
     function onScroll(e: NativeSyntheticEvent<NativeScrollEvent>) {
     const x = e.nativeEvent.contentOffset.x
@@ -39,7 +42,7 @@ const Home = () => {
         <ImageBackground source={background} style={{ flex: 1 }}>
           <ScrollView className="flex-1" contentContainerStyle={{ paddingBottom: 96  }}>
             {/* Carousel */}
-            <View className="mt-4">
+            <View className="mt-4 mb-2">
               <ScrollView
                 horizontal
                 pagingEnabled
@@ -49,132 +52,140 @@ const Home = () => {
                 ref={scrollRef}>
                 {carouselItems.map((c: any, idx: number) => (
                   <View key={idx} style={{ width }} className="px-5">
-                    <View className="bg-white rounded-md h-44 overflow-hidden">
+                    <View className={`${isDark ? 'bg-gray-800' : 'bg-white'} rounded-2xl h-48 overflow-hidden shadow-md ${isDark ? 'border border-gray-700' : 'border border-gray-100'}`}>
                       {c.image_uri ? (
                         <Image source={{ uri: c.image_uri }} style={{ width: '100%', height: '100%' }} resizeMode="cover" />
                       ) : (
-                      null )}
+                        <View className={`flex-1 ${isDark ? 'bg-gray-700' : 'bg-gray-200'} items-center justify-center`}>
+                          <Ionicons name="image-outline" size={48} color={isDark ? '#6B7280' : '#D1D5DB'} />
+                        </View>
+                      )}
                     </View>
                   </View>
                 ))}
               </ScrollView>
 
               {/* Dots */}
-              <View className="flex-row items-center justify-center mt-3">
+              <View className="flex-row items-center justify-center mt-4">
                 {carouselItems.map((_, i) => (
                   <View
                     key={i}
-                    className={`mx-1 ${i === activeIndex ? 'bg-black' : 'bg-gray-300'}`}
-                    style={{ width: i === activeIndex ? 8 : 6, height: 6, borderRadius: 3 }}
+                    className={`mx-1.5 ${i === activeIndex ? (isDark ? 'bg-white' : 'bg-gray-900') : (isDark ? 'bg-gray-700' : 'bg-gray-300')}`}
+                    style={{ width: i === activeIndex ? 10 : 6, height: 6, borderRadius: 3 }}
                   />
                 ))}
               </View>
             </View>
 
               {/* Categories */}
-              <View className="mt-2">
-                <Text className="text-lg font-bold ml-6">Categories</Text>
-                <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 10  }}>
+              <View className="mt-6 mb-6">
+                <Text className={`text-lg font-bold ml-5 mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>Categories</Text>
+                <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 16  }}>
                   {categories.map((cat) => (
                     <TouchableOpacity
                       key={cat.id}
-                      className="items-center mr-4"
+                      className="items-center mr-6"
                       onPress={() => {
                         router.push({ pathname: '/(dashboard)/category', params: { category: cat.type, label: cat.label } } as any);
                       }}
                     >
-                      <View className="w-14 h-14 bg-white rounded-2xl items-center justify-center shadow">
-                        <Ionicons name={cat.icon as any} size={24} className="text-black" />
+                      <View className={`w-16 h-16 ${isDark ? 'bg-gray-800' : 'bg-white'} rounded-full items-center justify-center shadow-md ${isDark ? 'border border-gray-700' : 'border border-gray-100'}`}>
+                        <Ionicons name={cat.icon as any} size={28} color={isDark ? '#fff' : '#000'} />
                       </View>
-                      <Text className="text-xs mt-1.5 text-black font-medium">{cat.label}</Text>
+                      <Text className={`text-xs mt-2.5 ${isDark ? 'text-gray-300' : 'text-gray-800'} font-medium text-center`}>{cat.label}</Text>
                     </TouchableOpacity>
                   ))}
                 </ScrollView>
               </View>
   
               {/* Product grid */}
-              <View className="flex-row flex-wrap p-2 rounded-md" style={{ marginHorizontal: -8 }}>
-                {products.map((p) => (
-                  <View key={p.id} className="w-1/2" style={{ paddingHorizontal: 6, marginBottom: 12 }}>
-                    <View className="bg-white shadow-sm">
-                      <View className="bg-gray-100 rounded-md overflow-hidden" style={{ aspectRatio: 1 }}>
-                        {p.image_uri ? (
-                          <Image source={{ uri: p.image_uri }} className="w-full h-full" resizeMode="cover" />
-                        ) : (
-                          <View className="flex-1 items-center justify-center">
-                            <Ionicons name="image-outline" size={36} className='bg-white' />
+              <View className="px-3 pb-6">
+                <Text className={`text-lg font-bold mb-4 ml-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>Available Items</Text>
+                <View className="flex-row flex-wrap gap-3">
+                  {products.map((p) => (
+                    <View key={p.id} className="flex-1 min-w-[45%] max-w-[48%]">
+                      <View className={`${isDark ? 'bg-gray-800' : 'bg-white'} rounded-lg overflow-hidden shadow-sm ${isDark ? 'border border-gray-700' : 'border border-gray-100'}`}>
+                        <View className={isDark ? 'bg-gray-700' : 'bg-gray-100'} style={{ aspectRatio: 1 }}>
+                          {p.image_uri ? (
+                            <Image source={{ uri: p.image_uri }} className="w-full h-full" resizeMode="cover" />
+                          ) : (
+                            <View className={`flex-1 items-center justify-center ${isDark ? 'bg-gray-600' : 'bg-gray-200'}`}>
+                              <Ionicons name="image-outline" size={40} color={isDark ? '#9CA3AF' : '#9CA3AF'} />
+                            </View>
+                          )}
+                        </View>
+  
+                        <View className="p-3">
+                          <Text className={`text-sm font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`} numberOfLines={2}>{p.title}</Text>
+                          <Text className={`text-lg font-bold ${isDark ? 'text-white' : 'text-gray-900'} mt-2`}>₱{p.price}</Text>
+  
+                          <View className="mt-3 gap-2">
+                            <TouchableOpacity
+                              className={`w-full ${isDark ? 'bg-green-500' : 'bg-gray-900'} px-3 py-2.5 rounded-lg ${isDark ? 'active:bg-green-600' : 'active:bg-gray-800'}`}
+                              onPress={() => {
+                                setSelectedItem(itemsMap[p.id]);
+                                setModalVisible(true);
+                              }}
+                            >
+                              <Text className="text-white text-xs text-center font-semibold">View Details</Text>
+                            </TouchableOpacity>
+  
+                            <TouchableOpacity
+                              className={`w-full ${isDark ? 'border border-gray-600' : 'border border-gray-300'} px-3 py-2.5 rounded-lg ${isDark ? 'active:bg-gray-700' : 'active:bg-gray-50'}`}
+                              onPress={() => {
+                                router.push({ pathname: '/(pill)/buy', params: { itemId: p.id } } as any);
+                              }}
+                            >
+                              <Text className={`${isDark ? 'text-white' : 'text-gray-900'} text-xs text-center font-semibold`}>Purchase</Text>
+                            </TouchableOpacity>
                           </View>
-                        )}
-                      </View>
-  
-                      <View className="mt-1">
-                        <Text className="text-sm font-medium" numberOfLines={1}>{p.title}</Text>
-                        <Text className="text-sm font-bold mt-1">₱ {p.price}</Text>
-  
-                        <View className="mt-2">
-  
-                          <TouchableOpacity
-                            className="w-full bg-black px-3 py-2 rounded-md mb-2"
-                            onPress={() => {
-                              setSelectedItem(itemsMap[p.id]);
-                              setModalVisible(true);
-                            }}
-                          >
-                            <Text className="text-white text-xs text-center font-semibold">Check Item</Text>
-                          </TouchableOpacity>
-  
-                          <TouchableOpacity
-                            className="w-full border border-green -300 px-3 py-2 rounded-md"
-                            onPress={() => {
-                              router.push({ pathname: '/(pill)/buy', params: { itemId: p.id } } as any);
-                            }}
-                          >
-                            <Text className="text-xs text-center font-semibold">Buy</Text>
-                          </TouchableOpacity>
                         </View>
                       </View>
                     </View>
-                  </View>
-                ))}
-            </View>
+                  ))}
+                </View>
+              </View>
           </ScrollView>
         </ImageBackground>
       </Layout>
 
     {/* Item Details Modal */}
     <Modal visible={modalVisible} animationType="slide" transparent={true}>
-      <View className="flex-1 bg-black/40 justify-end">
-        <View className="bg-white rounded-t-xl p-4" style={{ maxHeight: '80%' }}>
-          <View className="flex-row justify-between items-center">
-            <Text className="text-lg font-bold">{selectedItem?.title}</Text>
-            <TouchableOpacity onPress={() => setModalVisible(false)}>
-              <Ionicons name="close" size={24} color="#374151" />
+      <View className="flex-1 bg-black/50 justify-end">
+        <View className={`${isDark ? 'bg-gray-800' : 'bg-white'} rounded-t-2xl p-6`} style={{ maxHeight: '85%' }}>
+          <View className="flex-row justify-between items-start mb-4">
+            <Text className={`text-xl font-bold ${isDark ? 'text-white' : 'text-gray-900'} flex-1 mr-4`}>{selectedItem?.title}</Text>
+            <TouchableOpacity onPress={() => setModalVisible(false)} className="p-2">
+              <Ionicons name="close" size={26} color={isDark ? '#9CA3AF' : '#6B7280'} />
             </TouchableOpacity>
           </View>
 
-          <ScrollView className="mt-3">
+          <ScrollView className="mt-2" showsVerticalScrollIndicator={false}>
             {selectedItem?.image_uri ? (
-              <Image source={{ uri: selectedItem.image_uri }} style={{ width: '100%', height: 200 }} resizeMode="cover" />
+              <Image source={{ uri: selectedItem.image_uri }} style={{ width: '100%', height: 240 }} resizeMode="cover" className="rounded-lg mb-4" />
             ) : null}
 
-            <Text className="mt-3 text-sm text-gray-700">{selectedItem?.description}</Text>
+            <Text className={`text-sm ${isDark ? 'text-gray-300' : 'text-gray-700'} leading-relaxed mb-4`}>{selectedItem?.description}</Text>
 
             {selectedItem?.support_images?.length ? (
-              <ScrollView horizontal showsHorizontalScrollIndicator={false} className="mt-3">
-                {selectedItem.support_images.map((uri: string, i: number) => (
-                  <Image key={i} source={{ uri }} style={{ width: 100, height: 100, marginRight: 8 }} resizeMode="cover" />
-                ))}
-              </ScrollView>
+              <View className="mb-4">
+                <Text className={`text-sm font-semibold ${isDark ? 'text-white' : 'text-gray-900'} mb-2`}>More Images</Text>
+                <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                  {selectedItem.support_images.map((uri: string, i: number) => (
+                    <Image key={i} source={{ uri }} style={{ width: 120, height: 120, marginRight: 10, borderRadius: 8 }} resizeMode="cover" />
+                  ))}
+                </ScrollView>
+              </View>
             ) : null}
 
-            <View className="flex-row items-center justify-between mt-4">
-              <Text className="text-lg font-bold">₱ {selectedItem?.price}</Text>
-              <View className="flex-row">
-                <TouchableOpacity className="bg-green-600 px-4 py-2 rounded-md mr-2">
-                  <Text className="text-white">Buy</Text>
+            <View className={`${isDark ? 'border-gray-700' : 'border-gray-200'} border-t pt-4 mt-4`}>
+              <Text className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-900'} mb-4`}>₱{selectedItem?.price}</Text>
+              <View className="gap-3">
+                <TouchableOpacity className={`w-full ${isDark ? 'bg-green-500 active:bg-green-600' : 'bg-gray-900 active:bg-gray-800'} px-4 py-3.5 rounded-lg`}>
+                  <Text className="text-white text-center font-semibold">Purchase Now</Text>
                 </TouchableOpacity>
-                <TouchableOpacity className="border border-gray-300 px-4 py-2 rounded-md">
-                  <Text>Message Seller</Text>
+                <TouchableOpacity className={`w-full ${isDark ? 'border border-gray-600 active:bg-gray-700' : 'border border-gray-300 active:bg-gray-50'} px-4 py-3.5 rounded-lg`}>
+                  <Text className={`${isDark ? 'text-white' : 'text-gray-900'} text-center font-semibold`}>Message Seller</Text>
                 </TouchableOpacity>
               </View>
             </View>

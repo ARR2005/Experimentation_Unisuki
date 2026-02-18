@@ -1,24 +1,30 @@
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Text } from '@/components/ui/text';
-import { Link, useRouter } from 'expo-router';
-import * as React from 'react';
-import { Pressable, type TextInput, View } from 'react-native';
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
+import { useAuth } from "@/context/auth";
+import { Link, useRouter } from "expo-router";
+import * as React from "react";
+import { Pressable, type TextInput, View } from "react-native";
 
 export function SignInForm() {
   const router = useRouter();
+  const { login } = useAuth();
   const passwordInputRef = React.useRef<TextInput>(null);
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [errors, setErrors] = React.useState({ email: '', password: '', form: '' });
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [errors, setErrors] = React.useState({
+    email: "",
+    password: "",
+    form: "",
+  });
   const [loading, setLoading] = React.useState(false);
 
   function onEmailSubmitEditing() {
@@ -26,46 +32,55 @@ export function SignInForm() {
   }
 
   function validate() {
-    const newErrors = { email: '', password: '', form: '' };
+    const newErrors = { email: "", password: "", form: "" };
     if (!email) {
-      newErrors.email = 'Email is required';
+      newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(email)) {
-      newErrors.email = 'Email is invalid';
+      newErrors.email = "Email is invalid";
     }
     if (!password) {
-      newErrors.password = 'Password is required';
+      newErrors.password = "Password is required";
     }
     setErrors(newErrors);
     return !newErrors.email && !newErrors.password;
   }
 
-  function onSubmit() {
+  async function onSubmit() {
     if (validate()) {
       setLoading(true);
-      setErrors({ email: '', password: '', form: '' });
-      setTimeout(() => {
-
-        if (email === 'admin@gmail.com' && password === 'root') {
-          router.push('/(dashboard)/home');
-        } else {
-          setErrors({ email: '', password: '', form: 'Invalid email or password' });
-        }
+      setErrors({ email: "", password: "", form: "" });
+      try {
+        await login(email, password);
+        router.push("/(dashboard)/home");
+      } catch (error: any) {
+        setErrors({
+          email: "",
+          password: "",
+          form: error.message || "Login failed",
+        });
+      } finally {
         setLoading(false);
-      }, 2000);
+      }
     }
   }
 
   return (
-    <View className='absolute top-3 w-full'>
-      <Card className="border-border/0 sm:border-border shadow-none sm:shadow-sm sm:shadow-black/5">
+    <View className="w-full">
+      <Card className="w-full border-border/0 sm:border-border shadow-none sm:shadow-sm sm:shadow-black/5">
         <CardHeader>
-          <CardTitle className="text-center text-xl sm:text-left">Sign in to your app</CardTitle>
+          <CardTitle className="text-center text-xl sm:text-left">
+            Sign in to your app
+          </CardTitle>
           <CardDescription className="text-center sm:text-left">
             Welcome Please sign in to continue
           </CardDescription>
         </CardHeader>
         <CardContent className="gap-6">
-          {errors.form ? <Text className="text-red-500 text-center">{errors.form}</Text> : null}
+          <View className="min-h-5">
+            {errors.form ? (
+              <Text className="text-red-200 text-center">Invalid Email or Passowrd</Text>
+            ) : null}
+          </View>
           <View className="gap-6">
             <View className="gap-1.5">
               <Label htmlFor="email">Email</Label>
@@ -82,7 +97,9 @@ export function SignInForm() {
                 onChangeText={setEmail}
                 editable={!loading}
               />
-              {errors.email ? <Text className="text-red-500">{errors.email}</Text> : null}
+              {errors.email ? (
+                <Text className="text-red-500">{errors.email}</Text>
+              ) : null}
             </View>
             <View className="gap-1.5">
               <View className="flex-row items-center">
@@ -93,8 +110,11 @@ export function SignInForm() {
                   className="web:h-fit ml-auto h-4 px-1 py-0 sm:h-4"
                   onPress={() => {
                     // TODO: Navigate to forgot password screen
-                  }}>
-                  <Text className="font-normal leading-4">Forgot your password?</Text>
+                  }}
+                >
+                  <Text className="font-normal leading-4">
+                    Forgot your password?
+                  </Text>
                 </Button>
               </View>
               <Input
@@ -107,20 +127,31 @@ export function SignInForm() {
                 onChangeText={setPassword}
                 editable={!loading}
               />
-              {errors.password ? <Text className="text-red-500">{errors.password}</Text> : null}
+              {errors.password ? (
+                <Text className="text-red-500">{errors.password}</Text>
+              ) : null}
             </View>
-            <Button className="w-full bg-green-500 " onPress={onSubmit} disabled={loading}>
+            <Button
+              className="w-full bg-green-500 "
+              onPress={onSubmit}
+              disabled={loading}
+            >
               {loading ? <Text>Loading...</Text> : <Text>Continue</Text>}
             </Button>
           </View>
           <Text className="text-center text-sm">
-            Don&apos;t have an account?{' '}
+            Don&apos;t have an account?{" "}
             <Pressable
               onPress={() => {
                 // TODO: Navigate to sign up screen
-              }}>
-            </Pressable>
-            <Link href="/(auth)/signup" className='text-sm underline underline-offset-4'>Sign up</Link>
+              }}
+            ></Pressable>
+            <Link
+              href="/(auth)/signup"
+              className="text-sm underline underline-offset-4"
+            >
+              Sign up
+            </Link>
           </Text>
         </CardContent>
       </Card>

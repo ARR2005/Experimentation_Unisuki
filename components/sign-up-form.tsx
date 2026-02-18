@@ -1,11 +1,11 @@
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 import {
     Card,
     CardContent,
     CardDescription,
     CardHeader,
     CardTitle,
-} from '@/components/ui/card';
+} from "@/components/ui/card";
 import {
     Dialog,
     DialogContent,
@@ -13,23 +13,30 @@ import {
     DialogFooter,
     DialogHeader,
     DialogTitle,
-} from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Text } from '@/components/ui/text';
-import { Link, useRouter } from 'expo-router';
-import * as React from 'react';
-import { TextInput, View } from 'react-native';
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
+import { useAuth } from "@/context/auth";
+import { Link, useRouter } from "expo-router";
+import * as React from "react";
+import { TextInput, View } from "react-native";
 
 export function SignUpForm() {
   const passwordInputRef = React.useRef<TextInput>(null);
   const rePasswordInputRef = React.useRef<TextInput>(null);
   const [isModalVisible, setModalVisible] = React.useState(false);
   const router = useRouter();
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [rePassword, setRePassword] = React.useState('');
-  const [errors, setErrors] = React.useState({ email: '', password: '', rePassword: '', form: '' });
+  const { register } = useAuth();
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [rePassword, setRePassword] = React.useState("");
+  const [errors, setErrors] = React.useState({
+    email: "",
+    password: "",
+    rePassword: "",
+    form: "",
+  });
   const [loading, setLoading] = React.useState(false);
 
   function onEmailSubmitEditing() {
@@ -41,19 +48,19 @@ export function SignUpForm() {
   }
 
   function validate() {
-    const newErrors = { email: '', password: '', rePassword: '', form: '' };
+    const newErrors = { email: "", password: "", rePassword: "", form: "" };
     if (!email) {
-      newErrors.email = 'Email is required';
+      newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(email)) {
-      newErrors.email = 'Email is invalid';
+      newErrors.email = "Email is invalid";
     }
     if (!password) {
-      newErrors.password = 'Password is required';
+      newErrors.password = "Password is required";
     } else if (password.length < 6) {
-      newErrors.password = 'Password must be at least 6 characters';
+      newErrors.password = "Password must be at least 6 characters";
     }
     if (password !== rePassword) {
-      newErrors.rePassword = 'Passwords do not match';
+      newErrors.rePassword = "Passwords do not match";
     }
     setErrors(newErrors);
     return !newErrors.email && !newErrors.password && !newErrors.rePassword;
@@ -65,32 +72,44 @@ export function SignUpForm() {
     }
   }
 
-  function handleAccept() {
+  async function handleAccept() {
     setModalVisible(false);
     setLoading(true);
-    setErrors({ email: '', password: '', rePassword: '', form: '' });
-    setTimeout(() => {
-      // Simulate API call
-      console.log('Signed up with:', email, password);
-      // for now, we'll just assume it's successful
-      router.push('/(onboarding)');
+    setErrors({ email: "", password: "", rePassword: "", form: "" });
+    try {
+      await register(email, password);
+      router.push("/(onboarding)");
+    } catch (error: any) {
+      setErrors({
+        email: "",
+        password: "",
+        rePassword: "",
+        form: error.message || "Registration failed",
+      });
+    } finally {
       setLoading(false);
-    }, 2000);
+    }
   }
 
   return (
     <>
-      <View className="absolute top-[-4] w-full">
-        <Card className="border-border/0 sm:border-border shadow-none sm:shadow-sm sm:shadow-black/5">
+      <View className="w-full">
+        <Card className="w-full border-border/0">
           <CardHeader>
-            <CardTitle className="text-center text-xl sm:text-left">Create your account</CardTitle>
-            <CardDescription className="text-center sm:text-left">
+            <CardTitle className="text-center text-xl">
+              Create your account
+            </CardTitle>
+            <CardDescription className="text-center">
               Welcome! Please fill in the details to get started.
             </CardDescription>
           </CardHeader>
-          <CardContent className="gap-6">
-            {errors.form ? <Text className="text-red-500 text-center">{errors.form}</Text> : null}
-            <View className="gap-6">
+          <CardContent>
+            <View className="min-h-5">
+              {errors.form ? (
+                <Text className="text-red-500 text-center">Invalied Email or Passowrd</Text>
+              ) : null}
+            </View>
+            <View className="gap-2">
               <View className="gap-1.5">
                 <Label htmlFor="email">Email</Label>
                 <Input
@@ -106,7 +125,9 @@ export function SignUpForm() {
                   onChangeText={setEmail}
                   editable={!loading}
                 />
-                {errors.email ? <Text className="text-red-500">{errors.email}</Text> : null}
+                {errors.email ? (
+                  <Text className="text-red-500">{errors.email}</Text>
+                ) : null}
               </View>
               <View className="gap-1.5">
                 <View className="flex-row items-center">
@@ -122,7 +143,9 @@ export function SignUpForm() {
                   onChangeText={setPassword}
                   editable={!loading}
                 />
-                {errors.password ? <Text className="text-red-500">{errors.password}</Text> : null}
+                {errors.password ? (
+                  <Text className="text-red-500">{errors.password}</Text>
+                ) : null}
               </View>
               <View className="gap-1.5">
                 <View className="flex-row items-center">
@@ -138,16 +161,29 @@ export function SignUpForm() {
                   onChangeText={setRePassword}
                   editable={!loading}
                 />
-                {errors.rePassword ? <Text className="text-red-500">{errors.rePassword}</Text> : null}
+                {errors.rePassword ? (
+                  <Text className="text-red-500">{errors.rePassword}</Text>
+                ) : null}
               </View>
 
-              <Button className="w-full bg-green-500" onPress={onSubmit} disabled={loading}>
-                {loading ? <Text>Creating account...</Text> : <Text> Sign Up</Text>}
+              <Button
+                className="w-full bg-green-500 my-4"
+                onPress={onSubmit}
+                disabled={loading}
+              >
+                {loading ? (
+                  <Text>Creating account...</Text>
+                ) : (
+                  <Text> Sign Up</Text>
+                )}
               </Button>
             </View>
-            <Text className="text-center text-sm">
-              Already have an account?{' '}
-              <Link href="/(auth)/login" className="text-sm underline underline-offset-4">
+            <Text className="text-center text-sm pb-4">
+              Already have an account?{" "}
+              <Link
+                href="/(auth)/login"
+                className="text-sm underline underline-offset-4"
+              >
                 Sign in
               </Link>
             </Text>
@@ -160,10 +196,12 @@ export function SignUpForm() {
           <DialogHeader>
             <DialogTitle>Terms and Conditions</DialogTitle>
             <DialogDescription>
-              Please read and accept the terms and conditions before creating an account.
-              {'\n\n'}
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget
-              fermentum aliquam, nunc nisl aliquet nunc, eget aliquam nisl nunc eget nisl.
+              Please read and accept the terms and conditions before creating an
+              account.
+              {"\n\n"}
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+              euismod, nisl eget fermentum aliquam, nunc nisl aliquet nunc, eget
+              aliquam nisl nunc eget nisl.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
@@ -179,4 +217,3 @@ export function SignUpForm() {
     </>
   );
 }
-

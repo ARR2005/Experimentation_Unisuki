@@ -1,10 +1,4 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import {
-    logout as firebaseLogout,
-    signIn as firebaseSignIn,
-    signUp as firebaseSignUp,
-    onAuthStateChangedListener,
-} from '../firebaseConfig';
 
 export const Auth = createContext<any | null>(null);
 
@@ -13,37 +7,38 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [isAuthenticated, setIsAuthenticated] = useState<boolean | undefined>(undefined);
 
   useEffect(() => {
-        const unsubscribe = onAuthStateChangedListener((user) => {
-            setUser(user || null);
-            setIsAuthenticated(!!user);
-        });
+    // onAuthStatechanged
 
-        return () => unsubscribe();
+    setTimeout(() => {
+        setIsAuthenticated(false);
+    }, 4000);
   }, [])
 
   const login = async (email, password) => {
-      try {
-          await firebaseSignIn(email, password);
-      } catch (e) {
-          throw e;
-      }
+     // login logic
+     try {
+        
+     } catch (e) {
+        
+     }
   }
   
   const logout = async () => {
-      try {
-          await firebaseLogout();
-      } catch (e) {
-          throw e;
-      }
+     // logout logic
+     try {
+        
+     } catch (e) {
+        
+     }
   }
 
   const register =  async (email, studentID = null, username, password) => {
      // register logic
-      try {
-          await firebaseSignUp(email, password);
-      } catch (error) {
-          throw error;
-      }
+     try {
+        
+     } catch (error) {
+        
+     }
     }
 
     return (

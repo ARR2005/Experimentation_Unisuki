@@ -41,7 +41,3 @@ app-example
 # generated native folders
 /ios
 /android
-
-.env
-.env.d.ts
-firebaseConfig.js

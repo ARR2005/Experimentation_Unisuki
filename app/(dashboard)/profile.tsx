@@ -1,11 +1,11 @@
 import { Ionicons } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
-import { getAuth } from 'firebase/auth'
-import { getDatabase, onValue, ref } from 'firebase/database'
-import React, { useEffect, useState } from 'react'
-import { Image, Modal, Pressable, ScrollView, Switch, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import React, { useState } from 'react'
+import { Image, Modal, ScrollView, Switch, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import Layout from '../../components/Layout'
-import { logout as firebaseLogout } from '../../firebaseConfig'
+ 
+const DB = require('../../DB.json')
+const userProducts = Object.values(DB.items || {})
 
 // Mock user data. Ideally, this would come from your DB.json file.
 const mockUser = {
@@ -68,39 +68,15 @@ const Profile = () => {
   const [openAccordion, setOpenAccordion] = useState<string | null>(null)
   const [logoutModalVisible, setLogoutModalVisible] = useState(false)
   const [isDarkMode, setIsDarkMode] = useState(false)
-  const [userProducts, setUserProducts] = useState<any[]>([])
-
-  useEffect(() => {
-    const auth = getAuth()
-    const user = auth.currentUser
-    if (user) {
-      const db = getDatabase()
-      const itemsRef = ref(db, `users/${user.uid}/itemsPosted`)
-      const unsubscribe = onValue(itemsRef, (snapshot) => {
-        const data = snapshot.val()
-        if (data) {
-          const items = Object.keys(data).map((key) => ({ id: key, ...data[key] }))
-          setUserProducts(items)
-        } else {
-          setUserProducts([])
-        }
-      })
-      return () => unsubscribe()
-    }
-  }, [])
 
   const toggleAccordion = (key: string) => {
     setOpenAccordion(openAccordion === key ? null : key)
   }
 
-  const handleLogout = async () => {
+  const handleLogout = () => {
     setLogoutModalVisible(false)
-    try {
-      await firebaseLogout()
-      router.replace('/(auth)/login')
-    } catch (e) {
-      console.error('Logout failed:', e)
-    }
+    // In a real app, you'd clear auth tokens here
+    router.replace('/(auth)/login') // Navigate to login and remove back stack
   }
 
   return (
@@ -188,7 +164,6 @@ const Profile = () => {
       {/* Logout Modal */}
       <Modal visible={logoutModalVisible} transparent={true} animationType="fade" onRequestClose={() => setLogoutModalVisible(false)}>
         <View className="flex-1 justify-center items-center bg-black/50 px-4">
-          <Pressable className="absolute inset-0" onPress={() => setLogoutModalVisible(false)} />
           <View className="bg-white rounded-xl p-6 w-full max-w-sm">
             <Text className="text-lg font-bold text-center">Logout</Text>
             <Text className="text-base text-gray-600 text-center my-4">

@@ -1,41 +1,36 @@
 import { Button } from '@/components/ui/button';
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
 } from '@/components/ui/card';
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Text } from '@/components/ui/text';
 import { Link, useRouter } from 'expo-router';
-import { getAuth } from 'firebase/auth';
 import * as React from 'react';
 import { TextInput, View } from 'react-native';
-import { signUp as firebaseSignUp, initializeUserCoupons, initializeUserItems, saveUserProfile } from '../firebaseConfig';
-import { PersonalInfoModal } from './PersonalInfoModal';
 
 export function SignUpForm() {
   const passwordInputRef = React.useRef<TextInput>(null);
   const rePasswordInputRef = React.useRef<TextInput>(null);
   const [isModalVisible, setModalVisible] = React.useState(false);
-  const [showPersonalInfoModal, setShowPersonalInfoModal] = React.useState(false);
-  const [router] = React.useState(useRouter());
+  const router = useRouter();
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [rePassword, setRePassword] = React.useState('');
   const [errors, setErrors] = React.useState({ email: '', password: '', rePassword: '', form: '' });
   const [loading, setLoading] = React.useState(false);
-  const [currentUserUID, setCurrentUserUID] = React.useState<string | null>(null);
 
   function onEmailSubmitEditing() {
     passwordInputRef.current?.focus();
@@ -74,44 +69,18 @@ export function SignUpForm() {
     setModalVisible(false);
     setLoading(true);
     setErrors({ email: '', password: '', rePassword: '', form: '' });
-    (async () => {
-      try {
-        await firebaseSignUp(email, password);
-        const auth = getAuth();
-        const user = auth.currentUser;
-        if (user) {
-          setCurrentUserUID(user.uid);
-          // Initialize empty structures
-          await initializeUserCoupons(user.uid);
-          await initializeUserItems(user.uid);
-          setShowPersonalInfoModal(true);
-        }
-      } catch (e: any) {
-        setErrors((prev) => ({ ...prev, form: e?.message || 'Failed to create account' }));
-      } finally {
-        setLoading(false);
-      }
-    })();
-  }
-
-  const handlePersonalInfoSubmit = async (profileData: any) => {
-    if (!currentUserUID) return;
-    
-    setLoading(true);
-    try {
-      await saveUserProfile(currentUserUID, { ...profileData, email });
-      router.replace('/(onboarding)');
-    } catch (e: any) {
-      setErrors((prev) => ({ ...prev, form: 'Failed to save profile: ' + e?.message }));
-    } finally {
+    setTimeout(() => {
+      // Simulate API call
+      console.log('Signed up with:', email, password);
+      // for now, we'll just assume it's successful
+      router.push('/(onboarding)');
       setLoading(false);
-      setShowPersonalInfoModal(false);
-    }
-  };
+    }, 2000);
+  }
 
   return (
     <>
-      <View className="w-full">
+      <View className="absolute top-[-4] w-full">
         <Card className="border-border/0 sm:border-border shadow-none sm:shadow-sm sm:shadow-black/5">
           <CardHeader>
             <CardTitle className="text-center text-xl sm:text-left">Create your account</CardTitle>
@@ -207,17 +176,7 @@ export function SignUpForm() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-      <PersonalInfoModal 
-        visible={showPersonalInfoModal} 
-        onClose={(data) => {
-          if (data) {
-            handlePersonalInfoSubmit(data);
-          } else {
-            router.replace('/(onboarding)');
-          }
-        }}
-        loading={loading}
-      />
     </>
   );
 }
+

@@ -22,6 +22,7 @@
     "@rn-primitives/separator": "^1.2.0",
     "@rn-primitives/slot": "^1.2.0",
     "@rn-primitives/switch": "^1.2.0",
+    "@teachablemachine/image": "^0.8.5",
     "@tensorflow/tfjs": "^4.22.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -62,7 +63,6 @@
     "baseline-browser-mapping": "^2.9.19",
     "eslint": "^9.25.0",
     "eslint-config-expo": "~10.0.0",
-    "react-native-dotenv": "^3.4.11",
     "typescript": "~5.9.2"
   },
   "private": true
